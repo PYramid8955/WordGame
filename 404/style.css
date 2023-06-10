@@ -1,0 +1,43 @@
+html {font-size: 18px;}
+
+body {
+    -moz-user-highlight: none;
+    -webkit-user-select: none;
+    -o-user-highlight: none;
+    -moz-user-select: none;
+    background: #dbdbdb;
+    user-select: none;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+
+body>div {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    left: 50%;
+    top: 50%;
+}
+
+body>div>svg {
+    height: 100%;
+    width: 100%;
+}
+
+svgtext {
+    content: "";
+}
+
+body>div>p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 3%;
+    width: 101%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: #dbdbdb;
+}

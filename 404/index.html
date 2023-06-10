@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>404 - WordGame</title>
+</head>
+<body onload="typing()">
+    <div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><text x="-.2" y="12" font-size=11 id="svgtext"><noscript>404</noscript>|</text></svg>
+        <p>
+            <!-- Looks like you're lost! Click <a href="../main/index.html">here</a> to get back to the main page! -->
+        </p>
+    </div>
+    <script>
+        async function typing() {
+            await new Promise(r => setTimeout(r, 500))
+            let area = document.getElementById("svgtext")
+            area.innerHTML = "4|"
+            await new Promise(r => setTimeout(r, 500))
+            area.innerHTML = "40|"
+            await new Promise(r => setTimeout(r, 500))
+            area.innerHTML = "404"
+            await new Promise(r => setTimeout(r, 500))
+            area.innerHTML = ""
+            await new Promise(r => setTimeout(r, 100))
+            area.innerHTML = "404"
+            await new Promise(r => setTimeout(r, 100))
+            area.innerHTML = ""
+            await new Promise(r => setTimeout(r, 100))
+            area.innerHTML = "404"
+            await new Promise(r => setTimeout(r, 100))
+            area.innerHTML = ""
+            await new Promise(r => setTimeout(r, 100))
+            area.innerHTML = "404"
+            await new Promise(r => setTimeout(r, 100))
+        }
+    </script>
+</body>
+</html>
