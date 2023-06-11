@@ -7,7 +7,35 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>404 - WordGame</title>
 </head>
-<body onload="typing()">
+<body onload="typing(); letters()">
+    <div id="letters">
+        <span>A</span>
+        <span>B</span>
+        <span>C</span>
+        <span>D</span>
+        <span>E</span>
+        <span>F</span>
+        <span>G</span>
+        <span>H</span>
+        <span>I</span>
+        <span>J</span>
+        <span>K</span>
+        <span>L</span>
+        <span>M</span>
+        <span>N</span>
+        <span>O</span>
+        <span>P</span>
+        <span>Q</span>
+        <span>R</span>
+        <span>S</span>
+        <span>T</span>
+        <span>U</span>
+        <span>V</span>
+        <span>W</span>
+        <span>X</span>
+        <span>Y</span>
+        <span>Z</span>
+    </div>
     <div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><text x="-.2" y="12" font-size=11 id="svgtext"><noscript>404</noscript>|</text></svg>
         <p>
@@ -15,26 +43,62 @@
         </p>
     </div>
     <script>
+        async function letters() {
+            await new Promise(r => setTimeout(r, 2600))
+            for (i of document.getElementById("letters").children) {
+                i.style.top = Math.floor(Math.random() * (window.innerHeight - 2 * i.offsetHeight) + i.offsetHeight) + "px";
+                i.style.left = Math.floor(Math.random() * (window.innerWidth - 2 * i.offsetWidth) + i.offsetWidth) + "px";
+            }
+            await new Promise(r => setTimeout(r, 100));
+            setInterval(() => {
+                for (i of document.getElementById("letters").children) {
+                    let y = parseInt(i.style.top.replace("px", ""));
+                    let x = parseInt(i.style.left.replace("px", ""));
+                    switch (Math.floor(Math.random() * 4)) {
+                        case 0: 
+                            if (x - i.offsetWidth >= 0) {
+                                i.style.left = x - i.offsetWidth + "px";
+                                break
+                            }
+                        case 1:
+                            if (x + i.offsetWidth <= window.innerWidth - i.offsetWidth) {
+                                i.style.left = x + i.offsetWidth + "px";
+                                break
+                            }
+                        case 2: 
+                            if (x - i.offsetHeight >= 0) {
+                                i.style.top = y - i.offsetHeight + "px";
+                                break
+                            }
+                        case 3:
+                            if (y + i.offsetHeight <= window.innerHeight - i.offsetHeight) {
+                                i.style.top = y + i.offsetHeight + "px";
+                                break
+                            }
+                    }
+                }
+            }, 250)
+        }
         async function typing() {
-            await new Promise(r => setTimeout(r, 500))
-            let area = document.getElementById("svgtext")
-            area.innerHTML = "4|"
-            await new Promise(r => setTimeout(r, 500))
-            area.innerHTML = "40|"
-            await new Promise(r => setTimeout(r, 500))
-            area.innerHTML = "404"
-            await new Promise(r => setTimeout(r, 500))
-            area.innerHTML = ""
-            await new Promise(r => setTimeout(r, 100))
-            area.innerHTML = "404"
-            await new Promise(r => setTimeout(r, 100))
-            area.innerHTML = ""
-            await new Promise(r => setTimeout(r, 100))
-            area.innerHTML = "404"
-            await new Promise(r => setTimeout(r, 100))
-            area.innerHTML = ""
-            await new Promise(r => setTimeout(r, 100))
-            area.innerHTML = "404"
+            await new Promise(r => setTimeout(r, 500));
+            let area = document.getElementById("svgtext");
+            area.innerHTML = "4|";
+            await new Promise(r => setTimeout(r, 500));
+            area.innerHTML = "40|";
+            await new Promise(r => setTimeout(r, 500));
+            area.innerHTML = "404";
+            await new Promise(r => setTimeout(r, 500));
+            area.innerHTML = "";
+            await new Promise(r => setTimeout(r, 100));
+            area.innerHTML = "404";
+            await new Promise(r => setTimeout(r, 100));
+            area.innerHTML = "";
+            await new Promise(r => setTimeout(r, 100));
+            area.innerHTML = "404";
+            await new Promise(r => setTimeout(r, 100));
+            area.innerHTML = "";
+            await new Promise(r => setTimeout(r, 100));
+            area.innerHTML = "404";
             await new Promise(r => setTimeout(r, 100))
         }
     </script>
