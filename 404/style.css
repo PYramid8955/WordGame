@@ -13,11 +13,11 @@ body {
     margin: 0;
 }
 
-body>div:nth-child(2) {
+body>div:nth-child(3) {
     transform: translate(-50%, -50%);
     position: absolute;
-    width: 90%;
     height: 90%;
+    width: 90%;
     left: 50%;
     top: 50%;
 }
@@ -28,20 +28,35 @@ body>div>svg {
 }
 
 body>div>p {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 3%;
-    width: 101%;
     transform: translate(-50%, -50%);
     background: #dbdbdb;
+    position: absolute;
+    width: 101%;
+    height: 3%;
+    left: 50%;
+    top: 50%;
 }
 
 #letters>* {
-    display: block;
     position: absolute;
     color: darkgray;
+    display: block;
+    z-index: 10;
     top: 100%;
     left: 0;
-    z-index: 999999;
+}
+
+#mouse {
+    box-shadow: blue 0px 0px 40px;
+    transform: translate(-50%, -50%);
+    background: transparent;/*radial-gradient(rgb(0, 32, 175), transparent); */
+    border: 1px transparent;
+    position: absolute;
+    border-radius: 50%;
+    display: none;
+    height: 100px;
+    width: 100px;
+    z-index: 11;
+    left: -50px;
+    top: -50px;
 }
