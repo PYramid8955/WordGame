@@ -53,7 +53,7 @@ async function letters() {
                         i.classList.add("up")
                     } else turn = 3
                 }
-                if (turn == 3 || (i.classList[0] == "left" && [4,5].includes(turn))) {
+                if (turn == 3 || (i.classList[0] == "down" && [4,5].includes(turn))) {
                     if (y + i.offsetHeight <= window.innerHeight - i.offsetHeight) {
                         i.style.top = y + i.offsetHeight + "px";
                         i.classList = [];
