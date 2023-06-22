@@ -13,10 +13,20 @@ body {
   margin: 0;
 }
 
+#letters>* {
+  position: absolute;
+  color: darkgray;
+  display: block;
+  z-index: 0;
+  top: 100%;
+  left: 0;
+}
+
 #main {
   position: absolute;
   height: 100%;
   width: 100%;
+  z-index: 1;
 }
 
 #mainmenu {
@@ -27,8 +37,17 @@ body {
   top: 0;
 }
 
-#menu>div {
+#menu{
   text-align: center;
+  width: fit-content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#menu>div {
+  padding: .6rem;
 }
 
 #options {
@@ -87,6 +106,7 @@ img {
   padding: 1rem;
   margin: 1rem;
   border-radius: 1rem;
+  font-family: monospace;
 }
 
 #help {
@@ -99,4 +119,5 @@ img {
   padding: 1rem;
   margin: 1rem;
   border-radius: 1rem;
+  font-family: monospace;
 }
