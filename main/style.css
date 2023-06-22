@@ -9,7 +9,7 @@ body {
   user-select: none;
   overflow: hidden;
   height: 100vh;
-  width: 200vw;
+  width: calc(100% * 2);
   margin: 0;
 }
 
@@ -37,16 +37,40 @@ body {
 #main {
   position: absolute;
   height: 100%;
-  width: 100%;
+  left: 0;
+  top: 0;
+  text-wrap: nowrap;
+  /* 10 px because of the bug in other browsers, need to be taken in count */
+  width: calc(100% * 2 + 10px);
   z-index: 1;
 }
 
 #mainmenu {
-  position: absolute;
+  position: relative;
+  display: inline-block;
   height: 100%;
   width: 100vw;
   left: 0;
+  margin: 0;
   top: 0;
+}
+
+#host {
+  position: relative;
+  height: 100%;
+  width: 100vw;
+  float: right;
+  background: red;
+  display: none;
+}
+
+@keyframes slide {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100vw;
+  }
 }
 
 #menu{
