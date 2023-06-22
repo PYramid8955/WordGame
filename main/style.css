@@ -1,0 +1,102 @@
+html { font-size: 18px; }
+
+body {
+  -moz-user-highlight: none;
+  -webkit-user-select: none;
+  -o-user-highlight: none;
+  -moz-user-select: none;
+  background: #dbdbdb;
+  user-select: none;
+  overflow: hidden;
+  height: 100vh;
+  width: 200vw;
+  margin: 0;
+}
+
+#main {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#mainmenu {
+  position: absolute;
+  height: 100%;
+  width: 100vw;
+  left: 0;
+  top: 0;
+}
+
+#menu>div {
+  text-align: center;
+}
+
+#options {
+  height: 2.5rem;
+  width: 4.5rem;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "h s";
+  grid-gap: .5rem;
+  padding: .5rem;
+  right: 0;
+  bottom: 0;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.settings {
+  height: 1.9rem;
+  width: 1.9rem;
+  grid-area: s;
+  border-radius: 50%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.help {
+  grid-area: h;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.help:hover, .settings:hover {
+  opacity: .8;
+}
+
+#settings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  border: 5px solid gray;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+
+#help {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  border: 5px solid grey;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+}
