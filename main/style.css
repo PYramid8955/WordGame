@@ -22,6 +22,18 @@ body {
   left: 0;
 }
 
+#menu>hr {
+  margin: 0;
+  background-color: black;
+  border: 0.1rem solid black;
+  width: 12rem;
+}
+
+#menu>h1 {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
 #main {
   position: absolute;
   height: 100%;
@@ -39,6 +51,7 @@ body {
 
 #menu{
   text-align: center;
+  font-weight: 600;
   width: fit-content;
   position: absolute;
   top: 50%;
@@ -47,7 +60,21 @@ body {
 }
 
 #menu>div {
-  padding: .6rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+#menu>span {
+  background-color: black;
+  display: block;
+  height: 1px;
+  width: 80%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+#menu>div:hover {
+  background: linear-gradient(90deg, transparent, rgb(74, 137, 255) 50%, transparent);
 }
 
 #options {
