@@ -1,12 +1,14 @@
 var d = true;
 let nextpage = false;
 let host = document.getElementById("host");
+let join = document.getElementById("join");
+let spectate = document.getElementById("spectate");
 let main = document.getElementById("main");
 
-async function slide() {
+async function slide(direction) {
     main.style.animation = 'slide .5s linear';
     await new Promise(r => setTimeout(r, 480));
-    main.style.left = 'calc(-100% - 10px)';
+    main.style.left = parseInt(main.style.left == '' ? '0' : main.style.left) + (direction == "right" ? -100 : 100) + '%';
     nextpage = true
 }
 
@@ -42,9 +44,10 @@ async function letters() {
     var letteranim = setInterval(() => {
         for (i of document.getElementById("letters").children) {
             let y = parseInt(i.style.top.replace("px", ""));
-            if (y + i.offsetHeight <= window.innerHeight - i.offsetHeight) {
+            if (y + i.offsetHeight <= window.innerHeight) {
                 i.style.top = y + i.offsetHeight + "px";
             } else {
+                // this could be set to 0 to make animation more consistent, but I think this randomness looks better
                 i.style.top = Math.floor(Math.random() * (window.innerHeight - 2 * i.offsetHeight) + i.offsetHeight) - window.innerHeight + "px";
                 i.style.left = Math.floor(Math.random() * (window.innerWidth - 2 * i.offsetWidth) + i.offsetWidth) + "px";
             }

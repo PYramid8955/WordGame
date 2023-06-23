@@ -36,32 +36,52 @@ body {
 
 #main {
   position: absolute;
+  display: grid;
   height: 100%;
   left: 0;
   top: 0;
-  text-wrap: nowrap;
-  /* 10 px because of the bug in other browsers, need to be taken in count */
-  width: calc(100% * 2 + 10px);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "main option";
   z-index: 1;
 }
 
 #mainmenu {
   position: relative;
-  display: inline-block;
+  display: block;
   height: 100%;
   width: 100vw;
   left: 0;
   margin: 0;
   top: 0;
+  grid-area: main;
 }
 
 #host {
   position: relative;
   height: 100%;
   width: 100vw;
-  float: right;
   background: red;
   display: none;
+  grid-area: option;
+}
+
+#join {
+  position: relative;
+  height: 100%;
+  width: 100vw;
+  background: orange;
+  display: none;
+  grid-area: option;
+}
+
+#spectate {
+  position: relative;
+  height: 100%;
+  width: 100vw;
+  background: green;
+  display: none;
+  grid-area: option;
 }
 
 @keyframes slide {
