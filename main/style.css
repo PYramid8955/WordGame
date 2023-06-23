@@ -191,4 +191,37 @@ img {
   margin: 1rem;
   border-radius: 1rem;
   font-family: monospace;
+  max-width: 75%;
+  max-height: 75%;
 }
+
+.optionbox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  border: 5px solid grey;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  font-family: monospace;
+  max-width: 75%;
+  max-height: 75%;
+}
+
+.optionbox::-webkit-scrollbar {
+  width: 10px;
+}
+
+.optionbox::-webkit-scrollbar-track {
+  border-radius: 2px;
+}
+
+.optionbox::-webkit-scrollbar-thumb {
+  background: #3b322b; 
+  border-radius: 10px;
+}
+
+/*.optionbox::-webkit-scrollbar-thumb:hover {
+  background: #666666;*/
