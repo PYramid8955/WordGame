@@ -4,12 +4,15 @@ let host = document.getElementById("host");
 let join = document.getElementById("join");
 let spectate = document.getElementById("spectate");
 let main = document.getElementById("main");
+let mainmenu = document.getElementById("mainmenu");
 
-async function slide(direction) {
-    main.style.animation = 'slide .5s linear';
+async function slide(direction, hide, display, animoff = true) {
+    display.style.display = 'block';
+    main.style.animation = 'slide .5s ease-out';
     await new Promise(r => setTimeout(r, 480));
+    hide.style.display = 'none';
     main.style.left = parseInt(main.style.left == '' ? '0' : main.style.left) + (direction == "right" ? -100 : 100) + '%';
-    nextpage = true
+    if (animoff) nextpage = true; else letters()
 }
 
 function option(op) {
