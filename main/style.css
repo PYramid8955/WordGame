@@ -1,4 +1,10 @@
-html { font-size: 18px; }
+html { font-size: 3vh; }
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 5vw;
+  }
+}
 
 body {
   -moz-user-highlight: none;
@@ -9,7 +15,7 @@ body {
   user-select: none;
   overflow: hidden;
   height: 100vh;
-  width: calc(100% * 2);
+  width: 100%;
   margin: 0;
 }
 
@@ -57,15 +63,6 @@ body {
   grid-area: main;
 }
 
-#host {
-  position: relative;
-  height: 100%;
-  width: 100vw;
-  background: red;
-  display: none;
-  grid-area: option;
-}
-
 #join {
   position: relative;
   height: 100%;
@@ -93,7 +90,8 @@ body {
   }
 }
 
-#menu{
+#menu,
+#creategamemainbox {
   text-align: center;
   font-weight: 600;
   width: fit-content;
@@ -244,3 +242,79 @@ img {
 
 /*.optionbox::-webkit-scrollbar-thumb:hover {
   background: #666666;*/
+
+
+/* ========== #host ========== */
+
+#host {
+  position: relative;
+  height: 100%;
+  width: 100vw;
+  display: none;
+  grid-area: option;
+}
+
+#creategamemainbox {
+  font-weight: normal;
+  width: 50%;
+  height: 80%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 6fr;
+  grid-template-areas: "text" "settings";
+}
+
+#creategame {
+  border: 5px solid grey;
+  background: rgb(194, 194, 194);
+  border-radius: 1rem;
+  font-family: monospace;
+  grid-area: settings;
+}
+
+#host span {
+  grid-area: text;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  color: rgb(55, 119, 158);
+  vertical-align: middle;
+  font-weight: bolder;
+}
+
+.movingbtn {
+  width: 11vw;
+  height: 11vw;
+  cursor: pointer;
+  opacity: .9;
+}
+
+.movingbtn:hover {
+  opacity: .7;
+  width: 12vw;
+  height: 12vw;
+}
+
+.movingbtn:active {
+  width: 11vw;
+  height: 11vw;
+  opacity: .8;
+}
+
+.back {
+  position: absolute;
+  top: 50%;
+  left: 12.5%;
+  transform: translate(-50%, -50%);
+}
+
+.forward {
+  position: absolute;
+  top: 50%;
+  left: 87.5%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+/* =========================== */

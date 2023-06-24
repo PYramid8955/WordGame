@@ -1,5 +1,4 @@
 var d = true;
-let nextpage = false;
 let host = document.getElementById("host");
 let join = document.getElementById("join");
 let spectate = document.getElementById("spectate");
@@ -17,7 +16,7 @@ async function slide(direction, hide, display, animoff = true) {
     await new Promise(r => setTimeout(r, 480));
     hide.style.display = 'none';
     main.style.left = parseInt(main.style.left == '' ? '0' : main.style.left) + (direction == "right" ? -100 : 100) + '%';
-    if (animoff) nextpage = true; else letters()
+    if (animoff) nextpage = true; else if (nextpage) letters()
 }
 
 function option(op) {
@@ -45,6 +44,7 @@ function option(op) {
 }
 
 async function letters() {
+    let nextpage = false;
     for (i of document.getElementById("letters").children) {
         i.style.top = Math.floor(Math.random() * (window.innerHeight - 2 * i.offsetHeight) + i.offsetHeight) - window.innerHeight + "px";
         i.style.left = Math.floor(Math.random() * (window.innerWidth - 2 * i.offsetWidth) + i.offsetWidth) + "px";
