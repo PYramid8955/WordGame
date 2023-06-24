@@ -1,4 +1,5 @@
 var d = true;
+let root = document.querySelector(':root');
 let host = document.getElementById("host");
 let join = document.getElementById("join");
 let spectate = document.getElementById("spectate");
@@ -13,7 +14,11 @@ let spanresize = (span, wider = false) => {
 
 async function slide(direction, hide, display, animoff = true) {
     display.style.display = 'block';
-    main.style.animation = direction == "right" ? 'slideright .5s ease-out' : 'slideleft .5s ease-out'
+    let currentleftpos = main.style.left == '' ? '0' : main.style.left;
+    root.style.setProperty('--slide0', currentleftpos);
+    if (direction == 'right') root.style.setProperty('--slide100', parseInt(currentleftpos)-100+'%');
+    else root.style.setProperty('--slide100', parseInt(currentleftpos)+100+'%');
+    main.style.animation = 'slide .5s ease-out';
     await new Promise(r => setTimeout(r, 480));
     hide.style.display = 'none';
     main.style.animation = '';

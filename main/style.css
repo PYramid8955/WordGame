@@ -1,10 +1,8 @@
-html { font-size: 3vh; }
-
-@media screen and (max-width: 600px) {
-  html {
-    font-size: 5vw;
-  }
+:root {
+  --slide0: 0;
+  --slide100: 100%;
 }
+html { font-size: 3vh; }
 
 body {
   -moz-user-highlight: none;
@@ -81,21 +79,12 @@ body {
   grid-area: option;
 }
 
-@keyframes slideright {
+@keyframes slide {
   0% {
-    left: 0;
+    left: var(--slide0);
   }
   100% {
-    left: -100vw;
-  }
-}
-
-@keyframes slideleft {
-  0% {
-    left: -100vw;
-  }
-  100% {
-    left: 0;
+    left: var(--slide100);
   }
 }
 
@@ -279,6 +268,8 @@ img {
   border-radius: 1rem;
   font-family: monospace;
   grid-area: settings;
+  padding: .3rem;
+  overflow: hidden;
 }
 
 #host span {
@@ -292,21 +283,21 @@ img {
 }
 
 .movingbtn {
-  width: 11vw;
-  height: 11vw;
+  width: 5rem;
+  height: 5rem;
   cursor: pointer;
   opacity: .9;
 }
 
 .movingbtn:hover {
   opacity: .7;
-  width: 12vw;
-  height: 12vw;
+  width: 6rem;
+  height: 6rem;
 }
 
 .movingbtn:active {
-  width: 11vw;
-  height: 11vw;
+  width: 5.5rem;
+  height: 5.5rem;
   opacity: .8;
 }
 
@@ -314,16 +305,87 @@ img {
   position: absolute;
   top: 50%;
   left: 12.5%;
+  transition: .1s ease-out;
   transform: translate(-50%, -50%);
 }
 
 .forward {
   position: absolute;
+  transition: .1s ease-out;
   top: 50%;
   left: 87.5%;
   transform: translate(-50%, -50%);
 }
 
+.option {
+  padding: 1rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'text interaction';
+  align-items: center;
+  justify-items: center;
+}
+
+.option p {
+  position: relative;
+  display: block;
+  grid-area: text;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.option input {
+  width: 3rem;
+  height: 1.5rem;
+  padding: 0;
+  text-align: center;
+  font-size: 1rem;
+  border: none;
+}
+
+.option input:focus {
+  box-sizing: border-box;
+  border: 1px solid #444;
+  outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 
 /* =========================== */
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 5vw;
+  }
+  .option {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 'text' 'interaction';
+  }
+  .movingbtn {
+    width: 3rem;
+    height: 3rem;
+  }
+  .movingbtn:hover {
+    width: 4rem;
+    height: 4rem;
+  }
+  .movingbtn:active {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  
+}
