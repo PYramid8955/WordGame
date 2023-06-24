@@ -81,12 +81,21 @@ body {
   grid-area: option;
 }
 
-@keyframes slide {
+@keyframes slideright {
   0% {
     left: 0;
   }
   100% {
     left: -100vw;
+  }
+}
+
+@keyframes slideleft {
+  0% {
+    left: -100vw;
+  }
+  100% {
+    left: 0;
   }
 }
 

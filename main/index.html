@@ -7,7 +7,7 @@
     <script src="script.js" defer></script>
     <title>WordGame</title>
 </head>
-<body onfocus="//if (d) location.reload()" onload="slide('right', mainmenu, host, false); letters()">
+<body onfocus="//if (d) location.reload()" onload="/*slide('right', mainmenu, host, false);*/ letters()">
     <div id="letters">
         <span>A</span>
         <span>A</span>
@@ -90,7 +90,7 @@
             </div>
         </div>
         <div id="host">
-            <div class="back movingbtn"><img src="../assets/arrowl.svg" /></div>
+            <div class="back movingbtn" onclick="slide('left', host, mainmenu, false)"><img src="../assets/arrowl.svg" /></div>
             <div id="creategamemainbox">
                 <span><p>Create a new game</p></span>
                 <div id="creategame">
