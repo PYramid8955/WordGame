@@ -6,6 +6,11 @@ let spectate = document.getElementById("spectate");
 let main = document.getElementById("main");
 let mainmenu = document.getElementById("mainmenu");
 
+let spanresize = (span, wider = false) => {
+    if (wider) span.style.width = '100%';
+    else span.style.width = '40%';
+}
+
 async function slide(direction, hide, display, animoff = true) {
     display.style.display = 'block';
     main.style.animation = 'slide .5s ease-out';

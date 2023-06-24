@@ -108,18 +108,37 @@ body {
   cursor: pointer;
 }
 
-#menu>span {
+#menu>span,
+#menu>div:nth-child(7)::after {
   background-color: black;
+  position: relative;
   display: block;
   height: 1px;
-  width: 80%;
-  margin-left: 50%;
+  width: 40%;
+  left: 50%;
   transform: translateX(-50%);
+  transition: .5s;
+}
+
+#menu>div:nth-child(7)::after {
+  content: '';
+  width: 0;
+  bottom: -1rem;
 }
 
 #menu>div:hover {
   background: linear-gradient(90deg, transparent, rgb(74, 137, 255) 50%, transparent);
 }
+
+#menu>div:nth-child(3):hover + span,
+#menu>div:nth-child(5):hover + span {
+  width: 100% !important;
+}
+
+#menu > div:nth-child(7):hover::after {
+  width: calc(100% + 2rem);
+} 
+
 
 #options {
   height: 2.5rem;

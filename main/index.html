@@ -69,10 +69,10 @@
                 <h1>WordGame</h1>
                 <hr>
                 <div onclick="slide('right', mainmenu, host)">Host</div>
-                <span id="#span1" style="width: 90%;"></span>
-                <div onclick="slide('right', mainmenu, join)">Join</div>
-                <span></span>
-                <div onclick="slide('right', mainmenu, spectate)">Spectate</div>
+                <span id="menuspan1"></span>
+                <div onclick="slide('right', mainmenu, join)" onmouseenter="spanresize(document.getElementById('menuspan1'), true)" onmouseleave="spanresize(document.getElementById('menuspan1'))">Join</div>
+                <span id="menuspan2"></span>
+                <div onclick="slide('right', mainmenu, spectate)" onmouseenter="spanresize(document.getElementById('menuspan2'), true)" onmouseleave="spanresize(document.getElementById('menuspan2'))">Spectate</div>
             </div>
             <div id="options">
                 <div class="settings" onclick="option(1)">
