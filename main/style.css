@@ -182,46 +182,17 @@ img {
   opacity: .8;
 }
 
-#settings {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: none;
-  border: 5px solid gray;
-  padding: 1rem;
-  margin: 1rem;
-  border-radius: 1rem;
-  font-family: monospace;
-}
-
-#help {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: none;
-  border: 5px solid grey;
-  padding: 1rem;
-  margin: 1rem;
-  border-radius: 1rem;
-  font-family: monospace;
-  max-width: 75%;
-  max-height: 75%;
-}
-
 .optionbox {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: none;
-  border: 5px solid grey;
-  padding: 1rem;
-  margin: 1rem;
+  border: .3rem solid grey;
   border-radius: 1rem;
   font-family: monospace;
   max-width: 75%;
+  padding: 1rem;
   max-height: 75%;
 }
 
