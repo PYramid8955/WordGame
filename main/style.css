@@ -195,6 +195,7 @@ img {
   max-width: 75%;
   padding: 1rem;
   max-height: 75%;
+  overflow: auto;
 }
 
 .optionbox::-webkit-scrollbar {
