@@ -9,7 +9,7 @@ app.use(express.json());
 app.use("/assets", express.static("assets"));
 app.use("/", express.static("main"));
 app.use("/main", express.static("main"));
-app.use(express.static("404"));
+app.use("/404", express.static("404"));
 app.get("/*", (q, s) => {
     s.sendFile(`${cwd}/404/index.html`);
 });
