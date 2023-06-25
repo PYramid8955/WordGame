@@ -241,7 +241,8 @@ img {
   font-family: monospace;
   grid-area: settings;
   padding: .3rem;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #host span {
@@ -349,7 +350,7 @@ input[type=number] {
   height: 100%;
   position: relative;
   display: inline-block;
-  background: #444;
+  background: #212121;
 }
 
 .switch::after {
@@ -358,7 +359,7 @@ input[type=number] {
   width: 50%;
   height: 100%;
   position: relative;
-  background: rgb(28, 28, 255);
+  background: rgb(55 55 215);
   left: var(--switchpressl);
   top: 0;
   transition: .2s linear;
