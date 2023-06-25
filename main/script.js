@@ -28,7 +28,7 @@ async function slide(direction, hide, display, animoff = true) {
     await new Promise(r => setTimeout(r, 480));
     hide.style.display = 'none';
     main.style.animation = '';
-    main.style.left = parseInt(main.style.left == '' ? '0' : main.style.left) + (direction == "right" ? -100 : 100) + '%';
+    main.style.left = parseInt(currentleftpos) + (direction == "right" ? -100 : 100) + '%';
     if (animoff) nextpage = true; else if (nextpage) letters()
 }
 
