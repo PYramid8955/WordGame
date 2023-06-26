@@ -1,7 +1,8 @@
 :root {
   --slide0: 0;
   --slide100: 100%;
-  --switchpressl: -50%;
+  --switchpressl: 0;
+  --switchpresslb: 50%;
 }
 html { font-size: 3vh; }
 
@@ -191,15 +192,23 @@ img {
   font-family: monospace;
   width: 75%;
   height: 75%;
+  background: #dbdbdb;
 }
 
 .optionboxchild {
   width: 99.5%;
   height: calc(100% - 1rem);
   overflow: auto;
-  padding: 1rem;
   box-sizing: border-box;
   margin: .5rem 0;
+}
+
+#settings > .optionboxchild {
+  padding: 1rem;
+}
+
+#help > .optionboxchild {
+  padding: 1rem;
 }
 
 #help h1 {
@@ -265,7 +274,6 @@ img {
   border-radius: 1rem;
   font-family: monospace;
   grid-area: settings;
-  padding: .3rem;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -363,20 +371,26 @@ input[type=number] {
 }
 
 .switch {
-  background: #666;
+  background: #8d8d8d;
   cursor: pointer;
   overflow: hidden;
   border: 2px solid #333;
   border-radius: .5rem;
+  position: relative;
 }
 
 .switch::before {
   content: '';
-  width: 50%;
+  width: var(--switchpresslb);
   height: 100%;
-  position: relative;
+  position: absolute;
   display: inline-block;
-  background: #212121;
+  background: #646464;
+  border-radius: .5rem;
+  left: 0;
+  top: 0;
+  transition: .2s linear;
+  z-index: 1;
 }
 
 .switch::after {
@@ -384,11 +398,13 @@ input[type=number] {
   display: inline-block;
   width: 50%;
   height: 100%;
-  position: relative;
+  position: absolute;
   background: rgb(55 55 215);
   left: var(--switchpressl);
   top: 0;
+  border-radius: .5rem;
   transition: .2s linear;
+  z-index: 2;
 }
 
 /* =========================== */

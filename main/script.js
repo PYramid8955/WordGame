@@ -12,10 +12,15 @@ let spanresize = (span, wider = false) => {
     else span.style.width = '40%';
 }
 
-let switcher = (prop) => {
+let switcher = (prop, prop1) => {
     let rs = getComputedStyle(root);
-    if (rs.getPropertyValue(prop) == "-50%") root.style.setProperty(prop, '0');
-    else root.style.setProperty(prop, '-50%');
+    if (rs.getPropertyValue(prop) == "0") {
+        root.style.setProperty(prop, '50%');
+        root.style.setProperty(prop1, '100%')
+    } else {
+        root.style.setProperty(prop, '0');
+        root.style.setProperty(prop1, '50%');
+    }
 }
 
 async function slide(direction, hide, display, animoff = true) {

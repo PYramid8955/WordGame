@@ -7,7 +7,7 @@
     <script src="script.js" defer></script>
     <title>WordGame</title>
 </head>
-<body onfocus="//if (d) location.reload()" onload="/*slide('right', mainmenu, host, false);*/ //letters()">
+<body onfocus="//if (d) location.reload()" onload="/*slide('right', mainmenu, host, false);*/ letters()">
     <div id="letters">
         <span>A</span>
         <span>B</span>
@@ -107,15 +107,17 @@
             <div id="creategamemainbox">
                 <span><p>Create a new game</p></span>
                 <div id="creategame">
-                    <div class="option">
-                        <p>Players</p>
-                        <input type="number" max="10"/>
+                    <div class="optionboxchild">
+                        <div class="option">
+                            <p>Players</p>
+                            <input type="number" max="10"/>
+                        </div>
+                        <div class="option">
+                            Players can type "l" to get a letter
+                            <div class="switch" onclick="switcher('--switchpressl', '--switchpresslb')"></div>
+                        </div>
+                        <div class="option"></div>
                     </div>
-                    <div class="option">
-                        Players can type "l" to get a letter
-                        <div class="switch" onclick="switcher('--switchpressl')"></div>
-                    </div>
-                    <div class="option"></div>
                 </div>
             </div>
             <div class="forward movingbtn"><img src="../assets/arrowr.svg" /></div>
