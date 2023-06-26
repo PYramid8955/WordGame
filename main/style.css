@@ -6,6 +6,7 @@
 html { font-size: 3vh; }
 
 body {
+  -webkit-tap-highlight-color: transparent;
   -moz-user-highlight: none;
   -webkit-user-select: none;
   -o-user-highlight: none;
@@ -177,10 +178,6 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   cursor: pointer;
-}
-
-.help:hover, .settings:hover {
-  opacity: .8;
 }
 
 .optionbox {
@@ -418,4 +415,20 @@ input[type=number] {
     height: 3.5rem;
   }
   
+}
+
+/* On mobile devices :hover doesn't work, so I will replace it with :active for them */
+
+/* On a hoverable device */
+@media (hover:hover) {
+  .help:hover, .settings:hover {
+    opacity: .8;
+  }
+}
+
+/* On touch devices */
+@media (hover:none) {
+  .help:active, .settings:active {
+    opacity: .8;
+  }
 }
