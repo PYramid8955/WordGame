@@ -205,6 +205,24 @@ img {
   margin: .4rem 0;
 }
 
+#help h1 {
+  text-align: center;
+  margin-top: 0;
+}
+
+#help h1 span:nth-child(1) {
+  color: rgb(91, 91, 255);
+}
+#help h1 span:nth-child(2) {
+  color: rgb(61, 61, 253);
+}
+#help h1 span:nth-child(3) {
+  color: rgb(33, 33, 247);
+}
+#help h1 span:nth-child(4) {
+  color: rgb(10, 10, 255);
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
