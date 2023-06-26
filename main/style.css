@@ -197,12 +197,12 @@ img {
 }
 
 .optionboxchild {
-  width: 100%;
-  height: calc(100% - 0.8rem);
+  width: 99.5%;
+  height: calc(100% - 1rem);
   overflow: auto;
   padding: 1rem;
   box-sizing: border-box;
-  margin: .4rem 0;
+  margin: .5rem 0;
 }
 
 #help h1 {
@@ -228,16 +228,18 @@ img {
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 2px;
+  border-radius: 1rem;
+  background: #cbcbcb;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3b322b; 
+  background: rgb(80, 80, 80); 
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(61, 61, 61);
+  background: #383838;
+  border-radius: 1rem;
 }
 
 /* ========== #host ========== */
