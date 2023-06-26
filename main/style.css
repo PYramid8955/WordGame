@@ -3,6 +3,8 @@
   --slide100: 100%;
   --switchpressl: 0;
   --switchpresslb: 50%;
+  --switchspect: 0;
+  --switchspectb: 50%;
 }
 html { font-size: 3vh; }
 
@@ -406,6 +408,10 @@ input[type=number] {
   transition: .2s linear;
   z-index: 2;
 }
+
+#switchspect::before { width: var(--switchspectb); }
+
+#switchspect::after { left: var(--switchspect); }
 
 /* =========================== */
 
