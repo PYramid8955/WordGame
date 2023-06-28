@@ -1,3 +1,5 @@
+/* TODO: ADD A BORDER-BOTTOM/AFTER BETWEEN THE OPTIONS (that won't be 100% width) */
+
 :root {
   --slide0: 0;
   --slide100: 100%;
@@ -6,6 +8,7 @@
   --switchspect: 0;
   --switchspectb: 50%;
 }
+
 html { font-size: 3vh; }
 
 body {
@@ -242,7 +245,7 @@ img {
 
 ::-webkit-scrollbar-thumb {
   background: rgb(80, 80, 80); 
-  border-radius: 10px;
+  border-radius: 1rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -336,6 +339,21 @@ img {
   justify-items: center;
 }
 
+.option::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 90%;
+  transform: translateX(-50%);
+  height: 1px;
+  background: #555;
+}
+
+.option:last-child::after {
+  display: none;
+}
+
 .option p {
   position: relative;
   display: block;
@@ -371,6 +389,8 @@ input[type=number] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
+
+/* &&&&&&&&&& [.|#]switch &&&&&&&&&& */
 
 .switch {
   background: #8d8d8d;
@@ -415,6 +435,8 @@ input[type=number] {
 
 /* =========================== */
 
+/* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
+
 @media screen and (max-width: 600px) {
   html {
     font-size: 5vw;
@@ -423,6 +445,7 @@ input[type=number] {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: 'text' 'interaction';
+    gap: .5rem;
   }
   .movingbtn {
     width: 3rem;
@@ -435,6 +458,9 @@ input[type=number] {
   .movingbtn:active {
     width: 3.5rem;
     height: 3.5rem;
+  }
+  ::-webkit-scrollbar {
+    width: .3rem;
   }
   
 }
