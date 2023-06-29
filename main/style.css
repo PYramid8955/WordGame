@@ -71,7 +71,6 @@ body {
   position: relative;
   height: 100%;
   width: 100vw;
-  background: orange;
   display: none;
   grid-area: option;
 }
@@ -80,7 +79,6 @@ body {
   position: relative;
   height: 100%;
   width: 100vw;
-  background: green;
   display: none;
   grid-area: option;
 }
@@ -95,7 +93,7 @@ body {
 }
 
 #menu,
-#creategamemainbox {
+#creategamemainbox, #joingamemainbox, #spectategamemainbox {
   text-align: center;
   font-weight: 600;
   width: fit-content;
@@ -253,7 +251,7 @@ img {
 
 /* ========== #host ========== */
 
-#host {
+#host, #join, #spectate {
   position: relative;
   height: 100%;
   width: 100vw;
@@ -261,7 +259,7 @@ img {
   grid-area: option;
 }
 
-#creategamemainbox {
+#creategamemainbox, #joingamemainbox, #spectategamemainbox {
   font-weight: normal;
   width: 50%;
   height: 80%;
@@ -271,7 +269,7 @@ img {
   grid-template-areas: "text" "settings";
 }
 
-#creategame {
+#creategame, #joingame, #spectategame {
   border: 5px solid grey;
   background: rgb(194, 194, 194);
   border-radius: 1rem;
@@ -281,7 +279,7 @@ img {
   overflow-x: hidden;
 }
 
-#host span {
+#host span, #join span, #spectate span {
   grid-area: text;
   width: 100%;
   height: 100%;
@@ -508,6 +506,10 @@ input[type=number] {
   border-radius: .5rem;
   transition: .2s linear;
   z-index: 2;
+}
+
+.code {
+  
 }
 
 #switchspect::before { width: var(--switchspectb); }
