@@ -411,6 +411,66 @@ input[type=number] {
   margin-bottom: .5rem;
 }
 
+.words {
+  width: 100%;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  margin-bottom: 1rem;
+  justify-content: left;
+  gap: .5rem;
+}
+
+#addwords textarea {
+  resize: none;
+  width: 100%;
+  border-radius: .5rem;
+  padding: .3rem;
+  background: #e0e0e0;
+  height: 2rem;
+}
+
+#addwords textarea:focus {
+  outline: none;
+}
+
+#addwords textarea:active {
+  box-shadow: none;
+  border: 1px solid rgb(88, 88, 88);
+  border-radius: .5rem;
+}
+
+.wbox {
+  width: fit-content;
+  height: 1.6rem;
+  border: 1px solid rgb(36, 36, 36);
+  border-radius: .5rem;
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: .3rem;
+  padding: .3rem;
+  background: #8d8d8d;
+  align-items: center;
+}
+
+.letter {
+  border: 1px solid rgb(83, 83, 83) !important;
+  border-radius: .5rem !important;
+  width: 1rem !important;
+  height: 1rem !important;
+  padding: .1rem !important;
+}
+
+.letter:focus {
+  box-sizing: border-box;
+  border: 1px solid rgb(83, 83, 83) !important;
+  border-radius: .5rem !important;
+  outline: none;
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
 /* &&&&&&&&&& [.|#]switch &&&&&&&&&& */
 
 .switch {

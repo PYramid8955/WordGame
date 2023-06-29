@@ -2,14 +2,18 @@ var d = true;
 let root = document.querySelector(':root');
 let host = document.getElementById("host");
 let join = document.getElementById("join");
-let spectate = document.getElementById("spectate");
 let main = document.getElementById("main");
+let spectate = document.getElementById("spectate");
 let mainmenu = document.getElementById("mainmenu");
 let nextpage = false;
 
+function addletter(num) {
+    document.getElementById(`l${num}`).innerHTML += '<textarea placeholder="Word description" maxlength="70"></textarea><div class="wbox" style="grid-template-columns: ' + '1fr '.repeat(num) +'">' + '<input class="letter" maxlength="1" />'.repeat(num) + '</div>';
+}
+
 let spanresize = (span, wider = false) => {
     if (wider) span.style.width = '100%';
-    else span.style.width = '40%';
+    else span.style.width = '40%'
 }
 
 let switcher = (prop, prop1) => {
@@ -19,7 +23,7 @@ let switcher = (prop, prop1) => {
         root.style.setProperty(prop1, '100%')
     } else {
         root.style.setProperty(prop, '0');
-        root.style.setProperty(prop1, '50%');
+        root.style.setProperty(prop1, '50%')
     }
 }
 
