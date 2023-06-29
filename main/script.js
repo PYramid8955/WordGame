@@ -7,8 +7,8 @@ let spectate = document.getElementById("spectate");
 let mainmenu = document.getElementById("mainmenu");
 let nextpage = false;
 
-function addletter(num) {
-    document.getElementById(`l${num}`).innerHTML += '<textarea placeholder="Word description" maxlength="70"></textarea><div class="wbox" style="grid-template-columns: ' + '1fr '.repeat(num) +'">' + '<input class="letter" maxlength="1" />'.repeat(num) + '</div>';
+function addword(num) {
+    document.getElementById(`l${num}`).innerHTML += '<textarea placeholder="Word description" maxlength="70"></textarea><div class="wbox" style="grid-template-columns: ' + '1fr '.repeat(num) +'">' + '<input class="letter" maxlength="1" pattern="[A-Za-z]" />'.repeat(num) + '</div>';
 }
 
 let spanresize = (span, wider = false) => {
