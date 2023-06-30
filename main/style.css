@@ -478,6 +478,19 @@ input[type=number] {
   outline: none;
 }
 
+.errorbox {
+  width: calc(100% -.5rem);
+  margin: 0 .5rem;
+  font-size: .7rem;
+  box-sizing: border-box;
+  padding: .5rem;
+  background: rgba(59, 0, 0, 0.877);
+  border: .3rem solid rgba(15, 0, 0, 0.479);
+  color: red;
+  border-radius: .4rem;
+  display: none;
+}
+
 /* &&&&&&&&&& [.|#]switch &&&&&&&&&& */
 
 .switch {

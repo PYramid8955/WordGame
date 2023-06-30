@@ -108,9 +108,10 @@
                 <span><p>Create a new game</p></span>
                 <div id="creategame">
                     <div class="optionboxchild">
+                        <div class="errorbox"></div>
                         <div class="option">
                             <p>Players</p>
-                            <input type="number" max="10" onblur="addword(this)"/>
+                            <input type="number" max="10" onblur="addword(this)" name="players"/>
                         </div>
                         <div class="option">
                             Players can type "l" to get a letter
@@ -149,7 +150,7 @@
                     </div>
                 </div>
             </div>
-            <div class="forward movingbtn"><img src="../assets/arrowr.svg" /></div>
+            <div class="forward movingbtn" onclick="createGame()"><img src="../assets/arrowr.svg" /></div>
         </div>
         <div id="join">
             <div class="back movingbtn" onclick="slide('left', join, mainmenu, false)"><img src="../assets/arrowl.svg" /></div>
