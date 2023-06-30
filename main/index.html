@@ -7,7 +7,7 @@
     <script src="script.js" defer></script>
     <title>WordGame</title>
 </head>
-<body onfocus="//if (d) location.reload()" onload="slide('right', mainmenu, host, false); //letters()">
+<body onfocus="//if (d) location.reload()" onload="/*slide('right', mainmenu, host, false);*/ letters()">
     <div id="letters">
         <span>A</span>
         <span>B</span>
@@ -69,9 +69,9 @@
                 <hr>
                 <div onclick="slide('right', mainmenu, host, false)">Host</div>
                 <span id="menuspan1"></span>
-                <div onclick="slide('right', mainmenu, join)" onmouseenter="spanresize(document.getElementById('menuspan1'), true)" onmouseleave="spanresize(document.getElementById('menuspan1'))">Join</div>
+                <div onclick="slide('right', mainmenu, join, false)" onmouseenter="spanresize(document.getElementById('menuspan1'), true)" onmouseleave="spanresize(document.getElementById('menuspan1'))">Join</div>
                 <span id="menuspan2"></span>
-                <div onclick="slide('right', mainmenu, spectate)" onmouseenter="spanresize(document.getElementById('menuspan2'), true)" onmouseleave="spanresize(document.getElementById('menuspan2'))">Spectate</div>
+                <div onclick="slide('right', mainmenu, spectate, false)" onmouseenter="spanresize(document.getElementById('menuspan2'), true)" onmouseleave="spanresize(document.getElementById('menuspan2'))">Spectate</div>
             </div>
             <div id="options">
                 <div class="settings" onclick="option(1)">
@@ -110,7 +110,7 @@
                     <div class="optionboxchild">
                         <div class="option">
                             <p>Players</p>
-                            <input type="number" max="10"/>
+                            <input type="number" max="10" onblur="addword(this)"/>
                         </div>
                         <div class="option">
                             Players can type "l" to get a letter
@@ -125,25 +125,25 @@
                             <div id="addwords">
                                 <h4>4 letters</h4>
                                 <div id="l4" class="words"></div>
-                                <img src="../assets/plus.svg" alt="Add button" onclick="addword(4)"/>
+                                <!-- <img src="../assets/plus.svg" alt="Add button" onclick="addword(4)"/> -->
                                 <h4>5 letters</h4>
                                 <div id="l5" class="words"></div>
-                                <img src="../assets/plus.svg" alt="Add button" onclick="addword(5)"/>
+                                <!-- <img src="../assets/plus.svg" alt="Add button" onclick="addword(5)"/> -->
                                 <h4>6 letters</h4>
                                 <div id="l6" class="words"></div>
-                                <img src="../assets/plus.svg" alt="Add button" onclick="addword(6)"/>
+                                <!-- <img src="../assets/plus.svg" alt="Add button" onclick="addword(6)"/> -->
                                 <h4>7 letters</h4>
                                 <div id="l7" class="words"></div>
-                                <img src="../assets/plus.svg" alt="Add button" onclick="addword(7)"/>
+                                <!-- <img src="../assets/plus.svg" alt="Add button" onclick="addword(7)"/> -->
                                 <h4>8 letters</h4>
                                 <div id="l8" class="words"></div>
-                                <img src="../assets/plus.svg" alt="Add button" onclick="addword(8)"/>
+                                <!-- <img src="../assets/plus.svg" alt="Add button" onclick="addword(8)"/> -->
                                 <h4>9 letters</h4>
                                 <div id="l9" class="words"></div>
-                                <img src="../assets/plus.svg" alt="Add button" onclick="addword(9)"/>
+                                <!-- <img src="../assets/plus.svg" alt="Add button" onclick="addword(9)"/> -->
                                 <h4>10 letters</h4>
                                 <div id="l10" class="words"></div>
-                                <img src="../assets/plus.svg" alt="Add button" onclick="addword(10)"/>
+                                <!-- <img src="../assets/plus.svg" alt="Add button" onclick="addword(10)"/> -->
                             </div>
                         </div>
                     </div>

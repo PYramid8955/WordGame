@@ -5,10 +5,36 @@ let join = document.getElementById("join");
 let main = document.getElementById("main");
 let spectate = document.getElementById("spectate");
 let mainmenu = document.getElementById("mainmenu");
+let rs = getComputedStyle(root);
 let nextpage = false;
 
-function addword(num) {
-    document.getElementById(`l${num}`).innerHTML += '<textarea placeholder="Word description" maxlength="70"></textarea><div class="wbox" style="grid-template-columns: ' + '1fr '.repeat(num) +'">' + '<input class="letter" maxlength="1" pattern="[A-Za-z]" />'.repeat(num) + '</div>';
+function focusnext(ev) {
+    try {
+        ev.preventDefault();
+        ev.target.value = ev.data;
+        ev.target.nextSibling.focus();
+    } catch (err) {}
+}
+
+function addword(e) {
+    if (e.value != '') {
+    root.style.setProperty('--spectateafterdisplay', 'block');
+    document.querySelector('.option:last-child').style.display = 'block';
+    if (document.querySelector('#addwords textarea')) {
+        console.log(true)
+        let addWordsDiv = document.getElementById('addwords');
+        let textareas = addWordsDiv.getElementsByTagName('textarea');
+        let wboxs = addWordsDiv.getElementsByClassName('wbox');
+        while (textareas.length > 0) textareas[0].parentNode.removeChild(textareas[0]);
+        while (wboxs.length > 0) wboxs[0].parentNode.removeChild(wboxs[0]);
+    }
+    for (let i = 1; i <= parseInt(e.value)*2; i++)
+        for (let num = 4; num <= 10; num++) 
+            document.getElementById(`l${num}`).innerHTML += '<textarea placeholder="Word description" maxlength="70"></textarea><div class="wbox" style="grid-template-columns: ' + '1fr '.repeat(num) +'">' + '<input class="letter" maxlength="1" pattern="[A-Za-z]" onbeforeinput="focusnext(event)" />'.repeat(num) + '</div>';
+    } else {
+        root.style.setProperty('--spectateafterdisplay', 'none');
+        document.querySelector('.option:last-child').style.display = 'none';
+    }
 }
 
 let spanresize = (span, wider = false) => {
@@ -17,7 +43,6 @@ let spanresize = (span, wider = false) => {
 }
 
 let switcher = (prop, prop1) => {
-    let rs = getComputedStyle(root);
     if (rs.getPropertyValue(prop) == "0") {
         root.style.setProperty(prop, '50%');
         root.style.setProperty(prop1, '100%')

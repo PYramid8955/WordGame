@@ -5,6 +5,7 @@
   --switchpresslb: 50%;
   --switchspect: 0;
   --switchspectb: 50%;
+  --spectateafterdisplay: none;
 }
 
 html { font-size: 3vh; }
@@ -352,6 +353,12 @@ img {
 
 .option:last-child::after { display: none }
 
+.option:nth-child(3)::after { display: var(--spectateafterdisplay) }
+
+.option:last-child {
+  display: none;
+}
+
 .option p {
   position: relative;
   display: block;
@@ -418,6 +425,7 @@ input[type=number] {
   margin-bottom: 1rem;
   justify-content: left;
   gap: .5rem;
+  justify-items: center;
 }
 
 #addwords textarea {
@@ -509,9 +517,9 @@ input[type=number] {
   z-index: 2;
 }
 
-.code {
+/* .code {
   
-}
+} */
 
 #switchspect::before { width: var(--switchspectb); }
 
