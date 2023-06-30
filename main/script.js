@@ -17,7 +17,7 @@ function focusnext(ev) {
 }
 
 function addword(e) {
-    if (e.value != '') {
+    if (!['', '0'].includes(e.value)) {
     root.style.setProperty('--spectateafterdisplay', 'block');
     document.querySelector('.option:last-child').style.display = 'block';
     if (document.querySelector('#addwords textarea')) {
