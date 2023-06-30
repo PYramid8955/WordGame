@@ -353,7 +353,7 @@ img {
 
 .option:last-child::after { display: none }
 
-.option:nth-child(3)::after { display: var(--spectateafterdisplay) }
+.option:nth-child(4)::after { display: var(--spectateafterdisplay) }
 
 .option:last-child {
   display: none;
@@ -478,7 +478,7 @@ input[type=number] {
   outline: none;
 }
 
-.errorbox {
+.creategameErrorbox {
   width: calc(100% -.5rem);
   margin: 0 .5rem;
   font-size: .7rem;

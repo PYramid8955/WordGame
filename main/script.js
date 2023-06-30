@@ -5,8 +5,44 @@ let join = document.getElementById("join");
 let main = document.getElementById("main");
 let spectate = document.getElementById("spectate");
 let mainmenu = document.getElementById("mainmenu");
+let addWordsDiv = document.getElementById('addwords');
+let textareas = addWordsDiv.getElementsByTagName('textarea');
+let creategameErrorbox = document.querySelector("#creategame > div > div.creategameErrorbox");
 let rs = getComputedStyle(root);
 let nextpage = false;
+let lettercount = 0;
+
+function createGame() {
+    creategameErrorbox.innerHTML = 'Exceptions:<br/><br/>';
+    creategameErrorbox.style.display = 'none';
+    let players = document.querySelector('input[name=players]').value;
+    players = players == '' ? 0 : parseInt(players);
+    if (players <= 0) {
+        creategameErrorbox.innerHTML += '- Players cannot be less than 1.';
+        creategameErrorbox.style.display = 'block';
+        return
+    }
+    let count = 0;
+    let checks = 0;
+    let letter = addWordsDiv.getElementsByClassName('letter');
+    for (i of letter) if (i.value != '') count++;
+    if (count < players*98) {
+        creategameErrorbox.innerHTML += '<br/>';
+        creategameErrorbox.innerHTML += '- Please fill all the letter boxes.';
+        checks--
+    } count = 0;
+    for (i of textareas) if (i.value != '') count++;
+    if (count < 14*players) {
+        creategameErrorbox.innerHTML += '<br/>';
+        creategameErrorbox.innerHTML += '- Please fill all the word description textboxes.';
+        checks--
+
+    }
+    if (checks < 0) {
+        creategameErrorbox.style.display = 'block';
+        return
+    }
+}
 
 function focusnext(ev) {
     try {
@@ -17,15 +53,14 @@ function focusnext(ev) {
 }
 
 function addword(e) {
-    if (!['', '0'].includes(e.value)) {
+    if (!['', '0'].includes(e.value) && parseInt(e.value)>0) {
+    creategameErrorbox.innerHTML = 'Exceptions:<br/><br/>';
+    creategameErrorbox.style.display = 'none';
     root.style.setProperty('--spectateafterdisplay', 'block');
     document.querySelector('.option:last-child').style.display = 'block';
     if (document.querySelector('#addwords textarea')) {
-        console.log(true)
-        let addWordsDiv = document.getElementById('addwords');
-        let textareas = addWordsDiv.getElementsByTagName('textarea');
-        let wboxs = addWordsDiv.getElementsByClassName('wbox');
         while (textareas.length > 0) textareas[0].parentNode.removeChild(textareas[0]);
+        let wboxs = addWordsDiv.getElementsByClassName('wbox');
         while (wboxs.length > 0) wboxs[0].parentNode.removeChild(wboxs[0]);
     }
     for (let i = 1; i <= parseInt(e.value)*2; i++)
