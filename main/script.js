@@ -8,40 +8,62 @@ let mainmenu = document.getElementById("mainmenu");
 let addWordsDiv = document.getElementById('addwords');
 let textareas = addWordsDiv.getElementsByTagName('textarea');
 let creategameErrorbox = document.querySelector("#creategame > div > div.creategameErrorbox");
+let creategamedata = {};
 let rs = getComputedStyle(root);
 let nextpage = false;
 let lettercount = 0;
 
 function createGame() {
-    creategameErrorbox.innerHTML = 'Exceptions:<br/><br/>';
-    creategameErrorbox.style.display = 'none';
+    // creategameErrorbox.innerHTML = 'Exceptions:<br/><br/>';
+    // creategameErrorbox.style.display = 'none';
     let players = document.querySelector('input[name=players]').value;
     players = players == '' ? 0 : parseInt(players);
-    if (players <= 0) {
-        creategameErrorbox.innerHTML += '- Players cannot be less than 1.';
-        creategameErrorbox.style.display = 'block';
-        return
-    }
-    let count = 0;
-    let checks = 0;
+    // if (players <= 0) {
+    //     creategameErrorbox.innerHTML += '- Players cannot be less than 1.';
+    //     creategameErrorbox.style.display = 'block';
+    //     return
+    // }
+    // let count = 0;
+    // let checks = 0;
     let letter = addWordsDiv.getElementsByClassName('letter');
-    for (i of letter) if (i.value != '') count++;
-    if (count < players*98) {
-        creategameErrorbox.innerHTML += '<br/>';
-        creategameErrorbox.innerHTML += '- Please fill all the letter boxes.';
-        checks--
-    } count = 0;
-    for (i of textareas) if (i.value != '') count++;
-    if (count < 14*players) {
-        creategameErrorbox.innerHTML += '<br/>';
-        creategameErrorbox.innerHTML += '- Please fill all the word description textboxes.';
-        checks--
+    // for (i of letter) if (i.value != '') count++;
+    // if (count < players*98) {
+    //     creategameErrorbox.innerHTML += '<br/>';
+    //     creategameErrorbox.innerHTML += '- Please fill all the letter boxes.';
+    //     checks--
+    // } count = 0;
+    // for (i of textareas) if (i.value != '') count++;
+    // if (count < 14*players) {
+    //     creategameErrorbox.innerHTML += '<br/>';
+    //     creategameErrorbox.innerHTML += '- Please fill all the word description textboxes.';
+    //     checks--
 
+    // }
+    // if (checks < 0) {
+    //     creategameErrorbox.style.display = 'block';
+    //     return
+    // }
+    creategamedata.players = players;
+    creategamedata.pressl = rs.getPropertyValue('--switchpressl') == "50%" ? true : false;
+    creategamedata.spect = rs.getPropertyValue('--switchspect') == "50%" ? true : false;
+    creategamedata.words = {
+        '4': {},
+        '5': {},
+        '6': {},
+        '7': {},
+        '8': {},
+        '9': {},
+        '10': {}
     }
-    if (checks < 0) {
-        creategameErrorbox.style.display = 'block';
-        return
+    let word = 0;
+    let letters = '';
+    for (i of letter) letters += i.value;
+    for (let i = 0; i < 8*players; i+=4) {
+        creategamedata.words['4'][textareas[word].value] = letters.substring(i, i+4)
+        word++
     }
+    
+    console.log(creategamedata)
 }
 
 function focusnext(ev) {
