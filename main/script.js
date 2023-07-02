@@ -70,6 +70,19 @@ function createGame() {
         } till += i*2*players;
     }
     console.log(creategamedata)
+    creategamedata.request_type = 'creategame';
+    (async () => {
+        let res = await fetch("/play", {
+              method: "GET", 
+              body: JSON.stringify(creategamedata),
+              headers: {"Content-Type": "application/json"}})
+        let response = await res.json()
+        if (response.code == "200") {
+            window.location.replace("/play/" + response.roomCode)
+        } else {
+            console.log('Error')
+        }
+    })();
 }
 
 function focusnext(ev) {
