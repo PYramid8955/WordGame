@@ -73,7 +73,7 @@ function createGame() {
     creategamedata.request_type = 'creategame';
     (async () => {
         let res = await fetch("/play", {
-              method: "GET", 
+              method: "POST", 
               body: JSON.stringify(creategamedata),
               headers: {"Content-Type": "application/json"}})
         let response = await res.json()
