@@ -44,7 +44,7 @@ function createGame() {
         creategameErrorbox.style.display = 'block';
         return
     }
-    creategamedata.players = players;
+    creategamedata.playerNum = players;
     creategamedata.pressl = rs.getPropertyValue('--switchpressl') == "50%" ? true : false;
     creategamedata.spect = rs.getPropertyValue('--switchspect') == "50%" ? true : false;
     creategamedata.words = {
@@ -60,22 +60,24 @@ function createGame() {
     let letters = '';
     for (i of letter) letters += i.value;
     for (let i = 0; i < 8*players; i+=4) {
-        creategamedata.words['4'][textareas[word].value] = letters.substring(i, i+4);
+        creategamedata.words['4'][letters.substring(i, i+4)] = textareas[word].value;
         word++
     } let till = 8*players;
     for (let i = 5; i <= 10; i++) {
         for (let j = till; j < i*2*players+till; j+=i) {
-            creategamedata.words[`${i}`][textareas[word].value] = letters.substring(j, j+i);
+            creategamedata.words[`${i}`][letters.substring(j, j+i)] = textareas[word].value;
             word++
         } till += i*2*players;
     }
     console.log(creategamedata)
-    creategamedata.request_type = 'creategame';
     (async () => {
         let res = await fetch("/play", {
-              method: "POST", 
-              body: JSON.stringify(creategamedata),
-              headers: {"Content-Type": "application/json"}})
+                method: "POST", 
+                body: JSON.stringify({
+                    request_type: 'creategame',
+                    data: creategamedata
+                }),
+                headers: {"Content-Type": "application/json"}})
         let response = await res.json()
         if (response.code == "200") {
             window.location.replace("/play/" + response.roomCode)

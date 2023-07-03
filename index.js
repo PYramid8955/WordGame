@@ -6,6 +6,48 @@ const http = require('http');
 const server = http.createServer(app);
 var rooms = {};
 
+/* rooms structure:
+{
+    ROOM_CODE: {
+        playerNum: NUMBER_OF_PLAYERS,
+        pressl: true | false,
+        spect: true | false,
+        words: {
+            '4': {
+                4_LENGTH_WORD: WORD_DESCRIPTION,
+                ...
+            },
+            '5': {
+                5_LENGTH_WORD: WORD_DESCRIPTION,
+                ...
+            },
+            '6': {
+                6_LENGTH_WORD: WORD_DESCRIPTION,
+                ...
+            },
+            ...
+            '10': {
+                10_LENGTH_WORD: WORD_DESCRIPTION,
+                ...
+            }
+        },
+        admin: SOCKET.IO_ADMIN'S_ID,
+        playing: PLAYER_ID,
+        players: [
+            playerID,
+            playerID,
+            ...
+        ],
+        spectators: [           //if spect is true
+            spectatorID,
+            spectatorID,
+            ...
+        ],
+        start: true | false
+    },
+    ...
+} */
+
 let cwd = process.cwd();
 
 function genRoomCode(codes) {
@@ -29,6 +71,11 @@ function genRoomCode(codes) {
 app.post("/play", async (req, res) => {
     if (req.body.request_type == 'creategame') {
         //it will generate the room code and save the words (game data in "rooms" variable (would be replaced with the server database when the website would be online))
+        let roomCode = genRoomCode(rooms.keys());
+        rooms[roomCode] = req.body.data;
+        rooms[roomCode].players = new Array(rooms[roomCode].playerNum);
+        if (rooms[roomCode].spect) rooms[roomCode].spectators = [];
+        rooms[roomCode].start = false;
     }
 });
 
