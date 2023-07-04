@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 var rooms = {};
 
 /* rooms structure:
@@ -43,41 +45,59 @@ var rooms = {};
             spectatorID,
             ...
         ],
-        start: true | false
+        start: true | false,
+        secret: SECRET_ROOM_CODE
     },
     ...
 } */
 
 let cwd = process.cwd();
 
-function genRoomCode(codes) {
-    const codeLength = 6;
+function genRoomCode(codes, codeLength) {
     const codesSet = new Set(codes);
   
     while (true) {
-      let code = '';
-      for (let i = 0; i < codeLength; i++) {
-        code += characters.charAt(Math.floor(Math.random() * charactersLength));
-      }
-  
-      if (!codesSet.has(code)) {
-        return code;
-      }
-    }
-  }
-  
-  
+        let code = '';
+        for (let i = 0; i < codeLength; i++) {
+            code += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
 
-app.post("/play", async (req, res) => {
-    if (req.body.request_type == 'creategame') {
-        //it will generate the room code and save the words (game data in "rooms" variable (would be replaced with the server database when the website would be online))
-        let roomCode = genRoomCode(rooms.keys());
-        rooms[roomCode] = req.body.data;
-        rooms[roomCode].players = new Array(rooms[roomCode].playerNum);
-        if (rooms[roomCode].spect) rooms[roomCode].spectators = [];
-        rooms[roomCode].start = false;
-    }
+        if (!codesSet.has(code)) {
+            return code;
+        }
+   }
+}
+
+app.use(cookieParser());
+app.use(express.json()); 
+
+io.on('connection', (socket) => {
+    socket.on('creategame', (data) => {
+        words = 0;
+        for (let i = 4; i<=10; i++) {
+            words += Object.keys(data.word[i.toString()]).length
+        }
+        if (words == data.playerNum*14) {
+            //it will generate the room code and save the words (game data in "rooms" variable (would be replaced with the server database when the website would be online))
+            let roomCode = genRoomCode(Object.keys(rooms), 6);
+            rooms[roomCode] = data;
+            rooms[roomCode].secret = genRoomCode([], 13);
+            rooms[roomCode].players = new Array(rooms[roomCode].playerNum);
+            if (rooms[roomCode].spect) rooms[roomCode].spectators = [];
+            rooms[roomCode].start = false;
+            rooms[roomCode].admin = socket.id;
+            let response = 201
+        } else { let response = 417 }
+        io.to(socket.id).emit("response", {
+            to: 'creategame',
+            code: response,
+            room: roomCode,
+            secret: rooms[roomCode].secret
+        })
+    });
 });
+
+// app.post("/play", async (req, res) => {});
 
 app.use(express.json());
 app.use("/assets", express.static("assets"));

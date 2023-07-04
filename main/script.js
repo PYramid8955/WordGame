@@ -1,4 +1,4 @@
-var d = true;
+var socket = io();
 let root = document.querySelector(':root');
 let host = document.getElementById("host");
 let join = document.getElementById("join");
@@ -70,22 +70,18 @@ function createGame() {
         } till += i*2*players;
     }
     console.log(creategamedata)
-    (async () => {
-        let res = await fetch("/play", {
-                method: "POST", 
-                body: JSON.stringify({
-                    request_type: 'creategame',
-                    data: creategamedata
-                }),
-                headers: {"Content-Type": "application/json"}})
-        let response = await res.json()
-        if (response.code == "200") {
-            window.location.replace("/play/" + response.roomCode)
-        } else {
-            console.log('Error')
-        }
-    })();
+    socket.emit('creategame', creategamedata);
 }
+
+socket.on('response', function(response) {
+    if (response.to == 'creategame') {
+        if (response.code == 201) {
+            // slide to the accepting players/spectators window and write the room code from response.room
+            document.cookie = `secret=${response.secret}`;
+            const roomCode = response.room
+        }
+    }
+});
 
 function focusnext(ev) {
     try {
