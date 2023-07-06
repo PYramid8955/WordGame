@@ -78,7 +78,8 @@ socket.on('response', function(response) {
         if (response.code == 201) {
             // slide to the accepting players/spectators window and write the room code from response.room
             document.cookie = `secret=${response.secret}`;
-            const roomCode = response.room
+            var roomCode = response.room
+            console.log(roomCode)
         }
     }
 });
