@@ -51,9 +51,9 @@ body {
   height: 100%;
   left: 0;
   top: 0;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas: "main option";
+  grid-template-areas: "main option room";
   z-index: 1;
 }
 
@@ -252,12 +252,17 @@ img {
 
 /* ========== #host ========== */
 
-#host, #join, #spectate {
+#host, #join, #spectate, #room {
   position: relative;
   height: 100%;
   width: 100vw;
   display: none;
   grid-area: option;
+}
+
+#room {
+  grid-area: room;
+  background: #383838;
 }
 
 #creategamemainbox, #joingamemainbox, #spectategamemainbox {

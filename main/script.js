@@ -3,6 +3,7 @@ let root = document.querySelector(':root');
 let host = document.getElementById("host");
 let join = document.getElementById("join");
 let main = document.getElementById("main");
+let room = document.getElementById("room");
 let spectate = document.getElementById("spectate");
 let mainmenu = document.getElementById("mainmenu");
 let addWordsDiv = document.getElementById('addwords');
@@ -43,7 +44,7 @@ function createGame() {
     if (checks < 0) {
         creategameErrorbox.style.display = 'block';
         return
-    }
+    } slide('right', host, room);
     creategamedata.playerNum = players;
     creategamedata.pressl = rs.getPropertyValue('--switchpressl') == "50%" ? true : false;
     creategamedata.spect = rs.getPropertyValue('--switchspect') == "50%" ? true : false;
@@ -137,7 +138,6 @@ async function slide(direction, hide, display, animoff = true) {
     await new Promise(r => setTimeout(r, 480));
     hide.style.display = 'none';
     main.style.animation = '';
-    main.style.left = parseInt(currentleftpos) + (direction == "right" ? -100 : 100) + '%';
     if (animoff) nextpage = true; else if (nextpage) letters()
 }
 
