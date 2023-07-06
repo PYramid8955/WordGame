@@ -1,5 +1,6 @@
 const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz';
 const charactersLength = characters.length;
+const cookies = require("cookie-parser")
 const express = require("express");
 const app = express();
 const http = require('http');
@@ -68,7 +69,7 @@ function genRoomCode(codes, codeLength) {
    }
 }
 
-app.use(cookieParser());
+app.use(cookies());
 app.use(express.json()); 
 
 io.on('connection', (socket) => {
@@ -101,7 +102,7 @@ io.on('connection', (socket) => {
 
 app.use(express.json());
 app.use("/assets", express.static("assets"));
-app.use("/", express.static("main"));
+app.use("/", express.static("."));
 app.use("/main", express.static("main"));
 app.use("/404", express.static("404"));
 app.get("/*", (q, s) => {
