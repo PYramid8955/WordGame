@@ -105,6 +105,7 @@ function createGame() {
     //         word++
     //     } till += i*2*players;
     // }
+    slide('right', host, room);
     console.log(creategamedata)
     socket.emit('creategame', creategamedata);
 }
