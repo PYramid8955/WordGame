@@ -9,67 +9,102 @@ let mainmenu = document.getElementById("mainmenu");
 let addWordsDiv = document.getElementById('addwords');
 let textareas = addWordsDiv.getElementsByTagName('textarea');
 let creategameErrorbox = document.querySelector("#creategame > div > div.creategameErrorbox");
-let creategamedata = {};
+// let creategamedata = {}; //initial
+let creategamedata = {
+    "playerNum": 1,
+    "pressl": true,
+    "spect": false,
+    "words": {
+        "4": {
+            "dada": "dsada",
+            "dasd": "dasdasd"
+        },
+        "5": {
+            "dasds": "dasdasd",
+            "dasdd": "dasda"
+        },
+        "6": {
+            "dasdad": "dsada",
+            "dsadad": "dasdas"
+        },
+        "7": {
+            "dafxzcc": "dsaasda",
+            "gfdsvxc": "vxzcvxzcv"
+        },
+        "8": {
+            "vsdfvxvd": "vczgdsfvxcvz",
+            "fggbkghn": "zxcvzxfgrsdxcv"
+        },
+        "9": {
+            "vcxfsdfcb": "vxcvxfgzdv",
+            "jhjhjkmjn": "bcxvbcgd"
+        },
+        "10": {
+            "ljkhkhklkg": "ilkjlhjk",
+            "aaaaaaaaaa": "hjghjk"
+        }
+    }
+}
 let rs = getComputedStyle(root);
 let nextpage = false;
 let lettercount = 0;
 
 function createGame() {
-    let creategamedata = {};
-    creategameErrorbox.innerHTML = 'Exceptions:<br/><br/>';
-    creategameErrorbox.style.display = 'none';
-    let players = document.querySelector('input[name=players]').value;
-    players = players == '' ? 0 : parseInt(players);
-    if (players <= 0) {
-        creategameErrorbox.innerHTML += '- Players cannot be less than 1.';
-        creategameErrorbox.style.display = 'block';
-        return
-    }
-    let count = 0;
-    let checks = 0;
-    let letter = addWordsDiv.getElementsByClassName('letter');
-    for (i of letter) if (i.value != '') count++;
-    if (count < players*98) {
-        creategameErrorbox.innerHTML += '<br/>';
-        creategameErrorbox.innerHTML += '- Please fill all the letter boxes.';
-        checks--
-    } count = 0;
-    for (i of textareas) if (i.value != '') count++;
-    if (count < 14*players) {
-        creategameErrorbox.innerHTML += '<br/>';
-        creategameErrorbox.innerHTML += '- Please fill all the word description textboxes.';
-        checks--
+    // let creategamedata = {};
+    // creategameErrorbox.innerHTML = 'Exceptions:<br/><br/>';
+    // creategameErrorbox.style.display = 'none';
+    // let players = document.querySelector('input[name=players]').value;
+    // players = players == '' ? 0 : parseInt(players);
+    // if (players <= 0) {
+    //     creategameErrorbox.innerHTML += '- Players cannot be less than 1.';
+    //     creategameErrorbox.style.display = 'block';
+    //     return
+    // }
+    // let count = 0;
+    // let checks = 0;
+    // let letter = addWordsDiv.getElementsByClassName('letter');
+    // for (i of letter) if (i.value != '') count++;
+    // if (count < players*98) {
+    //     creategameErrorbox.innerHTML += '<br/>';
+    //     creategameErrorbox.innerHTML += '- Please fill all the letter boxes.';
+    //     checks--
+    // } count = 0;
+    // for (i of textareas) if (i.value != '') count++;
+    // if (count < 14*players) {
+    //     creategameErrorbox.innerHTML += '<br/>';
+    //     creategameErrorbox.innerHTML += '- Please fill all the word description textboxes.';
+    //     checks--
 
-    }
-    if (checks < 0) {
-        creategameErrorbox.style.display = 'block';
-        return
-    } slide('right', host, room);
-    creategamedata.playerNum = players;
-    creategamedata.pressl = rs.getPropertyValue('--switchpressl') == "50%" ? true : false;
-    creategamedata.spect = rs.getPropertyValue('--switchspect') == "50%" ? true : false;
-    creategamedata.words = {
-        '4': {},
-        '5': {},
-        '6': {},
-        '7': {},
-        '8': {},
-        '9': {},
-        '10': {}
-    }
-    let word = 0;
-    let letters = '';
-    for (i of letter) letters += i.value;
-    for (let i = 0; i < 8*players; i+=4) {
-        creategamedata.words['4'][letters.substring(i, i+4)] = textareas[word].value;
-        word++
-    } let till = 8*players;
-    for (let i = 5; i <= 10; i++) {
-        for (let j = till; j < i*2*players+till; j+=i) {
-            creategamedata.words[`${i}`][letters.substring(j, j+i)] = textareas[word].value;
-            word++
-        } till += i*2*players;
-    }
+    // }
+    // if (checks < 0) {
+    //     creategameErrorbox.style.display = 'block';
+    //     return
+    // } slide('right', host, room);
+    // creategamedata.playerNum = players;
+    // creategamedata.pressl = rs.getPropertyValue('--switchpressl') == "50%" ? true : false;
+    // creategamedata.spect = rs.getPropertyValue('--switchspect') == "50%" ? true : false;
+    // creategamedata.words = {
+    //     '4': {},
+    //     '5': {},
+    //     '6': {},
+    //     '7': {},
+    //     '8': {},
+    //     '9': {},
+    //     '10': {}
+    // }
+    // let word = 0;
+    // let letters = '';
+    // for (i of letter) letters += i.value;
+    // for (let i = 0; i < 8*players; i+=4) {
+    //     creategamedata.words['4'][letters.substring(i, i+4)] = textareas[word].value;
+    //     word++
+    // } let till = 8*players;
+    // for (let i = 5; i <= 10; i++) {
+    //     for (let j = till; j < i*2*players+till; j+=i) {
+    //         creategamedata.words[`${i}`][letters.substring(j, j+i)] = textareas[word].value;
+    //         word++
+    //     } till += i*2*players;
+    // }
     console.log(creategamedata)
     socket.emit('creategame', creategamedata);
 }

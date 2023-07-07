@@ -535,9 +535,9 @@ input[type=number] {
   z-index: 2;
 }
 
-.code {
+/* .code {
 
-}
+} */
 
 #switchspect::before { width: var(--switchspectb); }
 

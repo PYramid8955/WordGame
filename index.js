@@ -104,11 +104,17 @@ io.on('connection', (socket) => {
 
 app.use(express.json());
 app.use("/assets", express.static("assets"));
+app.use("/styles", express.static("styles"));
+app.use("/scripts", express.static("scripts"));
 app.use("/", express.static("."));
-app.use("/main", express.static("main"));
-app.use("/404", express.static("404"));
+app.get("/", (q, s) => {
+    s.sendFile(`${cwd}/pages/main.html`);
+});
+app.get("/main", (q, s) => {
+    s.sendFile(`${cwd}/pages/main.html`);
+});
 app.get("/*", (q, s) => {
-    s.sendFile(`${cwd}/404/index.html`);
+    s.sendFile(`${cwd}/pages/404.html`);
 });
 
 const srv = server.listen(process.env.PORT || 8080, () => {
