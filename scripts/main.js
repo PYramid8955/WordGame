@@ -106,7 +106,7 @@ function createGame() {
     //     } till += i*2*players;
     // }
     slide('right', host, room); // remove this line after debug is done
-    console.log(creategamedata)
+    console.log(creategamedata);
     socket.emit('creategame', creategamedata);
 }
 
@@ -117,6 +117,7 @@ socket.on('response', function(response) {
             document.cookie = `secret=${response.secret}`;
             var roomCode = response.room
             console.log(roomCode)
+            document.querySelector('#roomCode>span').innerHTML = roomCode;
         }
     }
 });
