@@ -94,7 +94,7 @@ body {
 }
 
 #menu,
-#creategamemainbox, #joingamemainbox, #spectategamemainbox {
+.creategamemainbox, #joingamemainbox, #spectategamemainbox {
   text-align: center;
   font-weight: 600;
   width: fit-content;
@@ -265,7 +265,7 @@ img {
   background: #383838;
 }
 
-#creategamemainbox, #joingamemainbox, #spectategamemainbox {
+.creategamemainbox, #joingamemainbox, #spectategamemainbox {
   font-weight: normal;
   width: 50%;
   height: 80%;
@@ -547,6 +547,47 @@ input[type=number] {
 
 /* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
 
+/* ========== #room ========== */
+
+#room > .creategamemainbox {
+  width: 95%;
+  height: 95%;
+  grid-template-rows: 2fr 7fr 1fr;
+  grid-template-areas: 
+  'text'
+  'player'
+  'delete';
+  gap: .5rem;
+}
+
+#roomCode {
+  grid-area: text;
+  background: saddlebrown;
+}
+
+.playerfieldbox {
+  grid-area: player;
+
+}
+
+.playerfield {
+  width: calc(50% - 0.5rem);
+  float: left;
+  display: block;
+  height: 100%;
+  background: rebeccapurple;
+}
+
+#room > div > div.playerfieldbox > div:nth-child(2) {
+  float: right;
+}
+
+#deletegame {
+  grid-area: delete;
+  background: brown;
+}
+
+/* =========================== */
 @media screen and (max-width: 600px) {
   html {
     font-size: 5vw;
