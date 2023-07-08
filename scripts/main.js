@@ -16,32 +16,32 @@ let creategamedata = {
     "spect": false,
     "words": {
         "4": {
-            "dada": "dsada",
-            "dasd": "dasdasd"
+            "Zipt": "A sudden or quick movement.",
+            "Blux": "A color that combines blue and luxuriant green."
         },
         "5": {
-            "dasds": "dasdasd",
-            "dasdd": "dasda"
+            "Drime": "A small droplet of water.",
+            "Plinx": "A substance that creates a sparkling effect."
         },
         "6": {
-            "dasdad": "dsada",
-            "dsadad": "dasdas"
+            "Frimzy": "A state of being slightly nervous or jittery.",
+            "Glidex": "A futuristic device that allows smooth gliding or sliding."
         },
         "7": {
-            "dafxzcc": "dsaasda",
-            "gfdsvxc": "vxzcvxzcv"
+            "Crystex": "A crystalline substance with extraordinary properties.",
+            "Quibbit": "A small, quick, and playful movement or action."
         },
         "8": {
-            "vsdfvxvd": "vczgdsfvxcvz",
-            "fggbkghn": "zxcvzxfgrsdxcv"
+            "Lumivore": "A mythical creature that feeds on light.",
+            "Zephyrus": "A gentle and refreshing breeze."
         },
         "9": {
-            "vcxfsdfcb": "vxcvxfgzdv",
-            "jhjhjkmjn": "bcxvbcgd"
+            "Whisprite": "A sprite or small creature associated with whispers.",
+            "Luminexia": "A magical world filled with vibrant luminescence."
         },
         "10": {
-            "ljkhkhklkg": "ilkjlhjk",
-            "aaaaaaaaaa": "hjghjk"
+            "Serenimist": "Someone who seeks serenity and promotes peace.",
+            "Chromisaur": "A dinosaur-like creature with colorful scales."
         }
     }
 }
@@ -105,7 +105,7 @@ function createGame() {
     //         word++
     //     } till += i*2*players;
     // }
-    slide('right', host, room);
+    slide('right', host, room); // remove this line after debug is done
     console.log(creategamedata)
     socket.emit('creategame', creategamedata);
 }
