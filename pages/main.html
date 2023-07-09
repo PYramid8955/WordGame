@@ -151,10 +151,10 @@
                     </div>
                 </div>
             </div>
-            <div class="forward movingbtn" onclick="createGame()"><img src="../assets/arrowr.svg" /></div>
+            <div class="forward movingbtn" onclick="createGame()"><img src="../assets/arrowr.svg" alt="continue"/></div>
         </div>
         <div id="join">
-            <div class="back movingbtn" onclick="slide('left', join, mainmenu, false)"><img src="../assets/arrowl.svg" /></div>
+            <div class="back movingbtn" onclick="slide('left', join, mainmenu, false)"><img src="../assets/arrowl.svg" alt="back"/></div>
             <div id="joingamemainbox">
                 <span><p>Join a game</p></span>
                 <div id="joingame">
@@ -184,15 +184,14 @@
         <div id="room">
             <div class="creategamemainbox">
                 <p id="roomCode">Room Code: <span></span></p>  <!-- room code -->
-                <div class="playerfieldbox">
-                    <div class="playerfield">
-                        <div class="optionboxchild"></div>
-                    </div>
-                    <div class="playerfield">
-                        <div class="optionboxchild"></div>
-                    </div>
+                <div class="playerfield">
+                    <div class="optionboxchild"></div>
                 </div>
-                <div id="deletegame"></div>
+                <div class="playerfield">
+                    <div class="optionboxchild"></div>
+                </div>
+                <div id="startgame" class="room-btn"><img src="../assets/arrowr2.svg" alt="Start the game!"/></div>
+                <div id="deletegame" class="room-btn"><img src="../assets/bin.svg" alt="Delete and quit."/></div>
             </div>
         </div>
     </div>

@@ -553,10 +553,11 @@ input[type=number] {
   width: 95%;
   height: 95%;
   grid-template-rows: 2fr 7fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas: 
-  'text'
-  'player'
-  'delete';
+    'text text'
+    'player player1'
+    'delete start';
   gap: .5rem;
 }
 
@@ -576,26 +577,52 @@ input[type=number] {
   user-select: text;
 }
 
-.playerfieldbox {
-  grid-area: player;
-
-}
-
 .playerfield {
-  width: calc(50% - 0.5rem);
-  float: left;
+  width: 100%;
   display: block;
   height: 100%;
-  background: rebeccapurple;
+  background: rgb(31, 31, 31);
+  border: .2rem solid rgb(101, 101, 101);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  grid-area: player;
+}
+
+#room>div>.playerfield:nth-child(3) {
+  grid-area: player1;
+  justify-self: right;
 }
 
 #room > div > div.playerfieldbox > div:nth-child(2) {
   float: right;
 }
 
+.room-btn {
+  cursor: pointer;
+  height: 2.5rem;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#startgame {
+  grid-area: start;
+  background: rgb(31, 122, 241);
+}
+
+.room-btn>img {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 #deletegame {
   grid-area: delete;
-  background: brown;
+  background: rgb(165, 50, 42);
 }
 
 /* =========================== */
@@ -624,7 +651,14 @@ input[type=number] {
   ::-webkit-scrollbar {
     width: .3rem;
   }
-  
+  #room > .creategamemainbox {
+    grid-template-rows: 2fr 3.5fr 3.5fr 1fr;
+    grid-template-areas: 
+      'text text'
+      'player player'
+      'player1 player1'
+      'delete start';
+  }
 }
 
 /* On mobile devices :hover doesn't work, so I will replace it with :active for them */
@@ -641,6 +675,15 @@ input[type=number] {
   #addwords>img:active {
     background: #222222;
   }
+  .room-btn:hover {
+    opacity: .8;
+    height: 2.7rem;
+    width: calc(100% + .2rem);
+  }
+  .room-btn:active {
+    width: calc(100% + .1rem);
+    height: 2.6rem;
+  }
 }
 
 /* On touch devices */
@@ -651,5 +694,9 @@ input[type=number] {
   }
   #addwords>img:active {
     background: #2a2a2a;
+  }
+  .room-btn:active {
+    width: calc(100% - .2rem);
+    height: 2.3rem;
   }
 }
