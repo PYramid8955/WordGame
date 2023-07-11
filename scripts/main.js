@@ -107,7 +107,13 @@ function createGame() {
     // }
     slide('right', host, room); // remove this line after debug is done
     console.log(creategamedata);
+    if (!socket.connected) socket.connect();
     socket.emit('creategame', creategamedata);
+}
+
+function deletegame() {
+    socket.disconnect();
+    slide('reft', room, host,false);
 }
 
 socket.on('response', function(response) {
