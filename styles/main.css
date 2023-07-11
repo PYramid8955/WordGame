@@ -626,12 +626,13 @@ input[type=number] {
 }
 
 .part {
-  width: calc(100% - .8rem);
+  width: calc(100% - 1rem);
   height: 1.5rem;
-  padding: .4rem;
+  padding: 0.4rem 0.6rem 0.4rem 0.4rem;
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 3fr 1fr 1fr;
+  grid-template-columns: auto 3fr auto auto;
+  gap: 0.5rem;
   grid-template-rows: 1fr;
   grid-template-areas: "type part accept decline";
 }
@@ -641,16 +642,41 @@ input[type=number] {
 }
 
 .partType {
-  width: 1rem;
-  height: 1rem;
+  min-width: 1.2rem;
+  width: fit-content;
+  height: 1.2rem;
+  padding: 0.2rem;
   border: 0.125rem solid rgb(71 71 71);
-  border-radius: 50%;
+  border-radius: 1rem;
   box-sizing: border-box;
   justify-self: center;
 }
 
 .spectator {
   background: rgb(236, 236, 20);
+}
+
+.player {
+  background: rgb(20 142 236);
+}
+
+.spectator::before {
+  content: "Spectator";
+}
+
+.player::before {
+  content: "Player";
+}
+
+.partType::before {
+  color: #000;
+  font-weight: bolder;
+  font-size: .6rem !important;
+  display: none;
+}
+
+.partType:hover::before {
+  display: block;
 }
 
 .part>span {
@@ -676,10 +702,15 @@ input[type=number] {
   align-self: center;
   justify-self: center;
   box-sizing: border-box;
+  z-index: 1;
 }
 
-.acceptPart {
-  justify-self: right !important;
+.acceptPart:hover {
+  background-color: #1f7af1;
+}
+
+.declinePart:hover {
+  background: #a00;
 }
 
 /* =========================== */
