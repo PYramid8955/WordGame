@@ -166,14 +166,15 @@ let switcher = (prop, prop1) => {
 }
 
 async function slide(direction, hide, display, animoff = true) {
-    display.style.display = 'block';
+    display.style.visibility = 'visible';
     let currentleftpos = main.style.left == '' ? '0' : main.style.left;
     root.style.setProperty('--slide0', currentleftpos);
     if (direction == 'right') root.style.setProperty('--slide100', parseInt(currentleftpos)-100+'%');
     else root.style.setProperty('--slide100', parseInt(currentleftpos)+100+'%');
     main.style.animation = 'slide .5s ease-out';
     await new Promise(r => setTimeout(r, 480));
-    hide.style.display = 'none';
+    main.style.left = direction == 'right' ? parseInt(currentleftpos)-100+'%' : parseInt(currentleftpos)+100+'%';
+    hide.style.visibility = 'hidden';
     main.style.animation = '';
     if (animoff) nextpage = true; else if (nextpage) letters()
 }
