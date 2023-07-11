@@ -11,6 +11,7 @@ var rooms = {};
 
 /* rooms structure:
 {
+    SOCKET.IO_ADMIN'S_ID: ROOM_CODE,
     ROOM_CODE: {
         playerNum: NUMBER_OF_PLAYERS,
         pressl: true | false,
@@ -89,6 +90,7 @@ io.on('connection', (socket) => {
             if (rooms[roomCode].spect) rooms[roomCode].spectators = [];
             rooms[roomCode].start = false;
             rooms[roomCode].admin = socket.id;
+            rooms[socket.id] = roomCode;
             response = 201
         }
         io.to(socket.id).emit("response", {
@@ -97,6 +99,12 @@ io.on('connection', (socket) => {
             room: roomCode,
             secret: rooms[roomCode].secret
         })
+    });
+    socket.on("disconnect", (reason) => {
+        if (!rooms[rooms[socket.id]].start) {
+            delete rooms[rooms[socket.id]];
+            delete rooms[socket.id]
+        }
     });
 });
 
