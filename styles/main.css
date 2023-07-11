@@ -703,14 +703,6 @@ input[type=number] {
   z-index: 1;
 }
 
-.acceptPart:hover {
-  background-color: #1f7af1;
-}
-
-.declinePart:hover {
-  background: #a00;
-}
-
 /* =========================== */
 @media screen and (max-width: 600px) {
   html {
@@ -775,6 +767,13 @@ input[type=number] {
     width: calc(100% + .1rem);
     height: 2.6rem;
   }
+  .acceptPart:hover {
+    background-color: #1f7af1;
+  }
+  
+  .declinePart:hover {
+    background: #a00;
+  }
 }
 
 /* On touch devices */
@@ -789,5 +788,12 @@ input[type=number] {
   .room-btn:active {
     width: calc(100% - .2rem);
     height: 2.3rem;
+  }
+  .acceptPart:active {
+    background-color: #1f7af1;
+  }
+  
+  .declinePart:active {
+    background: #a00;
   }
 }
