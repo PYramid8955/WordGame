@@ -101,7 +101,7 @@ io.on('connection', (socket) => {
         })
     });
     socket.on("disconnect", (reason) => {
-        if (!rooms[rooms[socket.id]].start) {
+        if (rooms[rooms[socket.id]] && !rooms[rooms[socket.id]].start) {
             delete rooms[rooms[socket.id]];
             delete rooms[socket.id]
         }
