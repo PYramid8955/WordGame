@@ -220,22 +220,47 @@ img {
   padding: 1rem;
 }
 
-#help h1 {
+.optionboxchild h1 {
   text-align: center;
   margin-top: 0;
 }
 
 #help h1 span:nth-child(1) {
-  color: rgb(91, 91, 255);
+  color: rgb(100, 100, 255);
 }
 #help h1 span:nth-child(2) {
-  color: rgb(61, 61, 253);
+  color: rgb(70, 70, 255);
 }
 #help h1 span:nth-child(3) {
-  color: rgb(33, 33, 247);
+  color: rgb(40, 40, 255);
 }
 #help h1 span:nth-child(4) {
   color: rgb(10, 10, 255);
+}
+
+#settings h1 span:nth-child(1) {
+  color: rgb(255, 150, 150);
+}
+#settings h1 span:nth-child(2) {
+  color: rgb(255, 130, 130);
+}
+#settings h1 span:nth-child(3) {
+  color: rgb(255, 110, 110);
+}
+#settings h1 span:nth-child(4) {
+  color: rgb(255, 90, 90);
+}
+#settings h1 span:nth-child(5) {
+  color: rgb(255, 70, 70);
+}
+#settings h1 span:nth-child(6) {
+  color: rgb(255, 50, 50);
+}
+#settings h1 span:nth-child(7) {
+  color: rgb(255, 30, 30);
+}
+#settings h1 span:nth-child(8) {
+  color: rgb(255, 10, 10);
 }
 
 ::-webkit-scrollbar {
