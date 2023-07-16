@@ -1,4 +1,4 @@
-var socket = io();
+let socket = io();
 let root = document.querySelector(':root');
 let host = document.getElementById("host");
 let join = document.getElementById("join");
@@ -9,6 +9,10 @@ let mainmenu = document.getElementById("mainmenu");
 let addWordsDiv = document.getElementById('addwords');
 let textareas = addWordsDiv.getElementsByTagName('textarea');
 let creategameErrorbox = document.querySelector("#creategame > div > div.creategameErrorbox");
+let optionBoxTitleAnim = {
+    '#help': false,
+    '#settings': false
+}
 // let creategamedata = {}; //initial
 let creategamedata = {
     "playerNum": 1,
@@ -48,6 +52,16 @@ let creategamedata = {
 let rs = getComputedStyle(root);
 let nextpage = false;
 let lettercount = 0;
+
+async function optionboxtitle(elem) {
+    optionBoxTitleAnim[elem] =  true;
+    let letters = document.querySelectorAll(`${elem} h1 span`);
+    while (optionBoxTitleAnim[elem]) {
+        for (let i = 0; i < letters.length; i++) {
+            letters[i].style.color = window.getComputedStyle(i == letters.length - 1 ? letters[0] : letters[i+1]).color
+        } await new Promise(r => setTimeout(r, letters.length <= 5 ? 300 : 150))
+    }
+}
 
 function createGame() {
     // let creategamedata = {};
@@ -192,20 +206,26 @@ function option(op) {
     if (op == 1) 
         if (settings.style.display == 'block') {
             settings.style.display = 'none';
-            menu.style.display = 'block'
+            menu.style.display = 'block';
+            optionBoxTitleAnim['#settings'] = false;
         } else {
             settings.style.display = 'block';
             help.style.display = 'none';
-            menu.style.display = 'none'
+            menu.style.display = 'none';
+            optionBoxTitleAnim['#help'] = false;
+            optionboxtitle('#settings')
         }
     else
         if (help.style.display == 'block') {
             help.style.display = 'none';
-            menu.style.display = 'block'
+            menu.style.display = 'block';
+            optionBoxTitleAnim['#help'] = false;
         } else {
             settings.style.display = 'none';
             help.style.display = 'block';
-            menu.style.display = 'none'
+            menu.style.display = 'none';
+            optionBoxTitleAnim['#settings'] = false;
+            optionboxtitle('#help')
         }
 }
 
