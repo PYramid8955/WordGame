@@ -778,6 +778,21 @@ input[type=number] {
   }
 }
 
+@keyframes rotateHelp {
+  25% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
 /* On mobile devices :hover doesn't work, so I will replace it with :active for them */
 
 /* On a hoverable device */
@@ -785,6 +800,9 @@ input[type=number] {
   .help:hover,
   .settings:hover {
     opacity: .8;
+  }
+  .help:hover {
+    animation: 1s rotateHelp infinite;
   }
   .settings:hover {
     animation: 1s rotateSettings infinite;
