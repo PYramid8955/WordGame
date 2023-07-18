@@ -332,18 +332,6 @@ img {
   opacity: .9;
 }
 
-.movingbtn:hover {
-  opacity: .7;
-  width: 6rem;
-  height: 6rem;
-}
-
-.movingbtn:active {
-  width: 5.5rem;
-  height: 5.5rem;
-  opacity: .8;
-}
-
 .back {
   transition: .1s ease-out;
   align-self: center;
@@ -747,13 +735,9 @@ input[type=number] {
     width: 3rem;
     height: 3rem;
   }
-  .movingbtn:hover {
-    width: 4rem;
-    height: 4rem;
-  }
   .movingbtn:active {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
   }
   ::-webkit-scrollbar {
     width: .3rem;
@@ -765,6 +749,16 @@ input[type=number] {
       'player player'
       'player1 player1'
       'delete start';
+  }
+  .creategamemainbox, #joingamemainbox, #spectategamemainbox {
+    width: 90%;
+    height: 90%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 6fr 1fr;
+    grid-template-areas:
+        "text text"
+        "settings settings"
+        "back forward";
   }
 }
 
@@ -833,6 +827,17 @@ input[type=number] {
   .declinePart:hover {
     background: #a00;
   }
+  .movingbtn:hover {
+    opacity: .7;
+    width: 6rem;
+    height: 6rem;
+  }
+  
+  .movingbtn:active {
+    width: 5.5rem;
+    height: 5.5rem;
+    opacity: .8;
+  }
 }
 
 /* On touch devices */
@@ -854,5 +859,10 @@ input[type=number] {
   
   .declinePart:active {
     background: #a00;
+  }
+  .movingbtn:active {
+    width: 4.5rem;
+    height: 4.5rem;
+    opacity: .8;
   }
 }
