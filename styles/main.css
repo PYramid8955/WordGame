@@ -294,12 +294,15 @@ img {
 
 .creategamemainbox, #joingamemainbox, #spectategamemainbox {
   font-weight: normal;
-  width: 50%;
+  width: 100%;
   height: 80%;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 50% 1fr;
+  justify-items: center;
   grid-template-rows: 1fr 6fr;
-  grid-template-areas: "text" "settings";
+  grid-template-areas:
+      "back text forward"
+      "back settings forward";
 }
 
 #creategame, #joingame, #spectategame {
@@ -342,19 +345,15 @@ img {
 }
 
 .back {
-  position: absolute;
-  top: 50%;
-  left: 12.5%;
   transition: .1s ease-out;
-  transform: translate(-50%, -50%);
+  align-self: center;
+  grid-area: back;
 }
 
 .forward {
-  position: absolute;
   transition: .1s ease-out;
-  top: 50%;
-  left: 87.5%;
-  transform: translate(-50%, -50%);
+  align-self: center;
+  grid-area: forward;
 }
 
 .option {
