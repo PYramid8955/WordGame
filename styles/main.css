@@ -721,7 +721,13 @@ input[type=number] {
 }
 
 /* =========================== */
-@media screen and (max-width: 600px) {
+@media screen and (orientation:landscape) and (max-width: 1000px) {
+  html {
+    font-size: 5vh;
+  }
+}
+
+@media screen and (orientation:portrait) and (max-width: 1000px) {
   html {
     font-size: 5vw;
   }
@@ -759,6 +765,7 @@ input[type=number] {
         "text text"
         "settings settings"
         "back forward";
+    gap: .2rem;
   }
 }
 
