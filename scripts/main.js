@@ -13,6 +13,8 @@ let optionBoxTitleAnim = {
     '#help': false,
     '#settings': false
 }
+let page = ['mainmenu'];
+const order = {'mainmenu': false, 'host':false, 'join':false, 'spectate':false, 'room':true}; // specifies the order and wether the animation should be turned off
 // let creategamedata = {}; //initial
 let creategamedata = {
     "playerNum": 1,
@@ -52,6 +54,19 @@ let creategamedata = {
 let rs = getComputedStyle(root);
 let nextpage = false;
 let lettercount = 0;
+
+window.addEventListener("popstate", e => {
+    let pl = page.length;
+    if (pl-1) {
+        if (page[pl-1] == 'room') deletegame()
+        else {
+            slide('left', window[page[pl-1]], window[page[pl-2]], order[page[pl-1]]);
+            history.pushState("", "", '#' + page[page.length-1])
+        }
+
+    }
+});
+  
 
 async function optionboxtitle(elem) {
     optionBoxTitleAnim[elem] =  true;
@@ -120,7 +135,7 @@ function createGame() {
     //     } till += i*2*players;
     // }
     slide('right', host, room); // remove this line after debug is done
-    console.log(creategamedata);
+    console.log(creategamedata); // remove after debug
     if (!socket.connected) socket.connect();
     socket.emit('creategame', creategamedata);
 }
@@ -186,6 +201,10 @@ let switcher = (prop, prop1) => {
 }
 
 async function slide(direction, hide, display, animoff = true) {
+    if (direction == 'right') {
+        page.push(display.id); // require slide elements to have IDs
+        history.pushState("", "", "#" + page[page.length-1])
+    } else page.pop();
     display.style.visibility = 'visible';
     let currentleftpos = main.style.left == '' ? '0' : main.style.left;
     root.style.setProperty('--slide0', currentleftpos);
@@ -196,7 +215,7 @@ async function slide(direction, hide, display, animoff = true) {
     main.style.left = direction == 'right' ? parseInt(currentleftpos)-100+'%' : parseInt(currentleftpos)+100+'%';
     hide.style.visibility = 'hidden';
     main.style.animation = '';
-    if (animoff) nextpage = true; else if (nextpage) letters()
+    if (animoff) nextpage = true; else if (nextpage) letters();
 }
 
 function option(op) {

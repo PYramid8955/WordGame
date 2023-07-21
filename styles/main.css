@@ -756,7 +756,7 @@ input[type=number] {
       'player1 player1'
       'delete start';
   }
-  .creategamemainbox, #joingamemainbox, #spectategamemainbox {
+  .creategamemainbox {
     width: 90%;
     height: 90%;
     grid-template-columns: 1fr 1fr;
