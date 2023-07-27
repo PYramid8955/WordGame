@@ -611,6 +611,7 @@ input[type=number] {
     'player player1'
     'delete start';
   gap: .5rem;
+  display: none; /*remove after debug*/
 }
 
 #roomCode {
@@ -757,6 +758,57 @@ input[type=number] {
   z-index: 1;
 }
 
+#waitingRoom {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-areas: "text" "main" "back";
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 7fr 1fr;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-self: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+#waitingRoom > div {
+  grid-area: main;
+}
+
+#waitingRoom > span > img {
+  transform: rotate(180deg);
+  position: relative;
+  width: 2.5rem;
+  top: 0;
+  left: calc(50% - 1.25rem);
+}
+
+#waitingRoom > span {
+  height: 2.5rem;
+  grid-area: back;
+  background: #00000052;
+  cursor: pointer;
+  overflow: hidden;
+  width: 100%;
+}
+
+@keyframes backanim {
+  0% {
+    left: calc(50% - 1.25rem);
+  }
+  49% {
+    left: -2.5rem;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: calc(50% - 1.25rem);
+  }
+}
+
 /* =========================== */
 @media screen and (orientation:landscape) and (max-width: 1000px) {
   html {
@@ -890,6 +942,9 @@ input[type=number] {
   }
   .backenter:hover {
     opacity: .6;
+  }
+  #waitingRoom > span:hover img {
+    animation: .5s backanim;
   }
 }
 

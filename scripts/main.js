@@ -68,6 +68,17 @@ window.addEventListener("popstate", e => {
     }
 });
   
+// function join(type) {
+    
+// }
+
+function mobileArrowAnim() {
+    if ('ontouchstart' in window) {
+        let img = document.querySelector('#waitingRoom>span>img');
+        img.style.animation = '.5s backanim'; 
+        setTimeout(() => img.style.animation = '', 500)
+    }
+}
 
 async function optionboxtitle(elem) {
     optionBoxTitleAnim[elem] =  true;

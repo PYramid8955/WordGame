@@ -164,7 +164,7 @@ Then make the logic to work with js -->
             </svg>
             <input type="text" class="joincode" maxlength="6" placeholder="Room Code">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="checkAndJoin">
-                <path transform="rotate(180 8 8)" d="M0 0h16v16h-16v-16M14 2L2 8 14 14 4 8" fill="#39396d"/>
+                <path transform="rotate(180 8 8)" d="M0 0h16v16h-16v-16M14 2L2 8 14 14 4 8" fill="#39396d" onclick="join('p')"/> <!-- p = Player -->
             </svg>
         </div>
         <div id="spectate" class="entergame">
@@ -173,7 +173,7 @@ Then make the logic to work with js -->
             </svg>
             <input type="text" class="joincode" maxlength="6" placeholder="Room Code">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="checkAndJoin">
-                <path transform="rotate(180 8 8)" d="M0 0h16v16h-16v-16M14 2L2 8 14 14 4 8" fill="#39396d"/>
+                <path transform="rotate(180 8 8)" d="M0 0h16v16h-16v-16M14 2L2 8 14 14 4 8" fill="#39396d" onclick="join('s')"/> <!-- s = Spectator -->
             </svg>
         </div>
         <div id="room">
@@ -195,6 +195,11 @@ Then make the logic to work with js -->
                 </div>
                 <div id="startgame" class="room-btn"><img src="../assets/arrowr2.svg" alt="Start the game!"/></div>
                 <div id="deletegame" class="room-btn" onclick="history.back()"><img src="../assets/bin.svg" alt="Delete and quit."/></div>
+            </div>
+            <div id="waitingRoom">
+                <h1>One more step<span>.</span><span>.</span><span>.</span></h1>
+                <div></div>
+                <span onclick="mobileArrowAnim()"><img src="../assets/arrowr2.svg" alt="Back"></span>
             </div>
         </div>
     </div>
