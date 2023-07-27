@@ -72,6 +72,18 @@ window.addEventListener("popstate", e => {
     
 // }
 
+async function oneMoreStepDots() {
+    let text = document.getElementById("waitingRoom");
+    let dots = document.querySelectorAll("#waitingRoom > h1 > span");
+    while (text.style.display == 'grid') {
+        for (let dot of dots) {
+            dot.style.visibility = 'visible';
+            await new Promise(r => setTimeout(r, 700));
+        } for (let dot of dots) dot.style.visibility = 'hidden';
+        await new Promise(r => setTimeout(r, 700));
+    }
+}
+
 function mobileArrowAnim() {
     if ('ontouchstart' in window) {
         let img = document.querySelector('#waitingRoom>span>img');
