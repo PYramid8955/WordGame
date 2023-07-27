@@ -68,18 +68,54 @@ body {
   grid-area: main;
 }
 
-#join {
-  position: relative;
-  height: 100%;
-  width: 100vw;
-  grid-area: option;
+/* #join {
+
 }
 
 #spectate {
+  
+} */
+
+.entergame {
   position: relative;
   height: 100%;
   width: 100vw;
   grid-area: option;
+  display: grid;
+  grid-template-areas: "back joincode next";
+  grid-template-columns: 3rem 10rem 3rem;
+  grid-template-rows: 3rem;
+  gap: .5rem;
+  justify-content: center;
+  justify-items: left;
+  align-content: center;
+  align-items: center;
+}
+
+.backenter {
+  cursor: pointer;
+  grid-area: back;
+  transition: .2s;
+}
+
+.joincode {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  border: 0.15rem solid #777;
+  font-size: 1.5rem;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  background: #bbb;
+  text-align: center;
+  color: #222;
+}
+
+.checkAndJoin {
+  cursor: pointer;
+  grid-area: next;
+  transition: .2s;
+  height: 100%;
 }
 
 @keyframes slide {
@@ -92,7 +128,7 @@ body {
 }
 
 #menu,
-.creategamemainbox, #joingamemainbox, #spectategamemainbox {
+.creategamemainbox {
   text-align: center;
   font-weight: 600;
   width: fit-content;
@@ -292,7 +328,7 @@ img {
   grid-area: option;
 }
 
-.creategamemainbox, #joingamemainbox, #spectategamemainbox {
+.creategamemainbox {
   font-weight: normal;
   width: 100%;
   height: 80%;
@@ -305,7 +341,7 @@ img {
       "back settings forward";
 }
 
-#creategame, #joingame, #spectategame {
+#creategame {
   border: 5px solid grey;
   background: rgb(194, 194, 194);
   border-radius: 1rem;
@@ -456,7 +492,8 @@ input[type=number] {
   height: 2rem;
 }
 
-#addwords textarea:focus {
+#addwords textarea:focus,
+.entergame input:focus {
   outline: none;
 }
 
@@ -845,6 +882,15 @@ input[type=number] {
     height: 5.5rem;
     opacity: .8;
   }
+  .checkAndJoin:hover {
+    height: 115%;
+  }
+  .checkAndJoin:active {
+    height: 110%;
+  }
+  .backenter:hover {
+    opacity: .6;
+  }
 }
 
 /* On touch devices */
@@ -871,5 +917,11 @@ input[type=number] {
     width: 4.5rem;
     height: 4.5rem;
     opacity: .8;
+  }
+  .checkAndJoin:active {
+    height: 90%;
+  }
+  .backenter:active {
+    opacity: .6;
   }
 }

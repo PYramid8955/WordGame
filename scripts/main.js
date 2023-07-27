@@ -57,6 +57,7 @@ let lettercount = 0;
 
 window.addEventListener("popstate", e => {
     let pl = page.length;
+    console.log(e.state);
     if (pl-1) {
         if (page[pl-1] == 'room') deletegame()
         else {
@@ -203,7 +204,7 @@ let switcher = (prop, prop1) => {
 async function slide(direction, hide, display, animoff = true) {
     if (direction == 'right') {
         page.push(display.id); // require slide elements to have IDs
-        history.pushState("", "", "#" + page[page.length-1])
+        history.pushState(page[page.length-1], "", "#" + page[page.length-1])
     } else page.pop();
     display.style.visibility = 'visible';
     let currentleftpos = main.style.left == '' ? '0' : main.style.left;

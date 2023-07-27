@@ -125,6 +125,6 @@ app.get("/*", (q, s) => {
     s.sendFile(`${cwd}/pages/404.html`);
 });
 
-const srv = server.listen(process.env.PORT || 8080, () => {
+const srv = server.listen(process.env.PORT || 8955, () => {
     console.log(`App listening on port ${srv.address().port}`)
 });
