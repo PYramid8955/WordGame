@@ -805,6 +805,83 @@ input[type=number] {
   transition: .2s;
 }
 
+#waitingRoom > div > div {
+  position: relative;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 2s;
+  width: 0;
+  height: 0;
+  grid-row-gap: .4rem;
+  background: radial-gradient(gray, #333);
+  display: grid;
+  grid-template-columns: 5fr 2rem 5fr;
+  font-size: 1.5rem;
+  grid-template-rows: 1fr 2rem 1fr;
+  overflow: hidden;
+  justify-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  grid-template-areas:
+        "toptext toptext toptext"
+        "nick discrimchar discrim"
+        "checkmark checkmark checkmark";
+  overflow: hidden;
+  transition: 2s;
+}
+
+#waitingRoom > div > div > span:nth-child(1) {
+  grid-area: toptext;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  padding: .8rem 0;
+  font-weight: bold;
+  color: black;
+  visibility: hidden;
+}
+
+#waitingRoom > div > div > input:nth-child(2) {
+  grid-area: nick;
+  visibility: hidden;
+}
+
+#waitingRoom > div > div > span:nth-child(3) {
+  grid-area: discrimchar;
+  color: #222;
+  visibility: hidden;
+}
+
+#waitingRoom > div > div > input:nth-child(4) {
+  grid-area: discrim;
+  visibility: hidden;
+}
+
+#waitingRoom > div > div > span:nth-child(5) {
+  grid-area: checkmark;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  border-top: 2px solid #474747;
+  padding-top: .3rem;
+  visibility: hidden;
+}
+
+#waitingRoom > div > div > span:nth-child(5) > img {
+  width: 2rem;
+  height: 2rem;
+  padding: .1rem;
+  cursor: pointer;
+}
+#waitingRoom > div > div > span:nth-child(5) > img:hover {
+  background: rgba(225, 225, 225, .1);
+}
+
 @keyframes backanim {
   0% {
     left: calc(50% - 1.25rem);

@@ -198,8 +198,14 @@ Then make the logic to work with js -->
             </div>
             <div id="waitingRoom" style="display:grid">
                 <h1>One more step<span style="visibility: hidden;">.</span><span style="visibility: hidden;">.</span><span style="visibility: hidden;">.</span></h1>
-                <div class="playerfield"></div>
-                <span onclick="mobileArrowAnim()"><img src="../assets/arrowr2.svg" alt="Back"></span>
+                <div class="playerfield">
+                    <div>
+                        <span>Set your nickname and discriminatory</span>
+                        <input type="text" class="joincode" maxlength="10" placeholder="Nickname"><span>@</span><input type="number" class="joincode" max="9999" placeholder="0000">
+                        <span><img src="../assets/accept.svg"/></span>
+                    </div>
+                </div>
+                <span onclick="mobileArrowAnim(); history.back()"><img src="../assets/arrowr2.svg" alt="Back"></span>
             </div>
         </div>
     </div>
