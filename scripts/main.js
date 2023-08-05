@@ -68,9 +68,15 @@ window.addEventListener("popstate", e => {
     }
 });
   
-// function join(type) {
-    
-// }
+function joinGame(type) {
+   oneMoreStepDots()
+    let enternick = document.querySelector("#waitingRoom > div > div");
+    let enternickcontent = document.querySelectorAll("#waitingRoom > div > div > *");
+    enternick.style.width = enternick.style.height = '50%';
+    setTimeout(() => {
+        for (el of enternickcontent) el.style.visibility = "visible"
+    }, 2000)
+}
 
 async function oneMoreStepDots() {
     let text = document.getElementById("waitingRoom");
