@@ -11,7 +11,7 @@ Then make the logic to work with js -->
     <script src="../scripts/main.js" defer></script>
     <title>WordGame</title>
 </head>
-<body onload="slide('right', mainmenu, host, false); createGame(); joinGame() //letters()">
+<body onload="slide('right', mainmenu, host, false); //createGame(); joinGame() //letters()">
     <div id="letters">
         <span>A</span>
         <span>B</span>
@@ -162,19 +162,21 @@ Then make the logic to work with js -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="backenter" onclick="history.back()">
                 <path d="M14.9,5.5q.1,.3,.1,.5,0,1.5,-1.5,1.5h-7q-.5,0,-.5,-.5v-1q0,-.5,-.5,0l-2.5,2,2.5,2q.5,.5,.5,0v-1q0,-.5,.5,-.5h7q1.5,0,1.5,1.5,0,.2,-.1,.5A7,7,0,1,1,14.9,5.5" stroke="#555" stroke-width=".4" fill="#999" stroke-linecap="round"/>
             </svg>
-            <input type="text" class="joincode" maxlength="6" placeholder="Room Code">
+            <input onfocus="document.getElementById('pEnterGameErrorBox').innerHTML = ''" type="text" class="joincode" maxlength="6" placeholder="Room Code">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="checkAndJoin">
-                <path transform="rotate(180 8 8)" d="M0 0h16v16h-16v-16M14 2L2 8 14 14 4 8" fill="#39396d" onclick="join('p')"/> <!-- p = Player -->
+                <path transform="rotate(180 8 8)" d="M0 0h16v16h-16v-16M14 2L2 8 14 14 4 8" fill="#39396d" onclick="joinGME('p')"/> <!-- p = Player -->
             </svg>
+            <div id="pEnterGameErrorBox"></div>
         </div>
         <div id="spectate" class="entergame">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="backenter" onclick="history.back()">
                 <path d="M14.9,5.5q.1,.3,.1,.5,0,1.5,-1.5,1.5h-7q-.5,0,-.5,-.5v-1q0,-.5,-.5,0l-2.5,2,2.5,2q.5,.5,.5,0v-1q0,-.5,.5,-.5h7q1.5,0,1.5,1.5,0,.2,-.1,.5A7,7,0,1,1,14.9,5.5" stroke="#555" stroke-width=".4" fill="#999" stroke-linecap="round"/>
             </svg>
-            <input type="text" class="joincode" maxlength="6" placeholder="Room Code">
+            <input onfocus="document.getElementById('sEnterGameErrorBox').innerHTML = ''" type="text" class="joincode" maxlength="6" placeholder="Room Code">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="checkAndJoin">
-                <path transform="rotate(180 8 8)" d="M0 0h16v16h-16v-16M14 2L2 8 14 14 4 8" fill="#39396d" onclick="join('s')"/> <!-- s = Spectator -->
+                <path transform="rotate(180 8 8)" d="M0 0h16v16h-16v-16M14 2L2 8 14 14 4 8" fill="#39396d" onclick="joinGME('s')"/> <!-- s = Spectator -->
             </svg>
+            <div id="sEnterGameErrorBox"></div>
         </div>
         <div id="room">
             <div class="creategamemainbox">
@@ -200,9 +202,9 @@ Then make the logic to work with js -->
                 <h1>One more step<span style="visibility: hidden;">.</span><span style="visibility: hidden;">.</span><span style="visibility: hidden;">.</span></h1>
                 <div class="playerfield">
                     <div>
-                        <span><div></div></span>
-                        <input type="text" class="joincode" maxlength="10" placeholder="Nickname"><span>@</span><input type="number" oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="4" class="joincode" max="9999" placeholder="0000">
-                        <span><img src="../assets/arrowr2.svg"/></span>
+                        <span><div></div></span> <!-- info box -->
+                        <input type="text" class="joincode" onblur="if (this.value.trim() == '')  this.style.borderColor = 'red'; this.value = this.value.trim()" onfocus="if (this.style.borderColor == 'red') this.style.borderColor = '#777'; root.style.setProperty('--joinLobbyInfoBoxTop', '0');" maxlength="10" placeholder="Nickname"><span>@</span><input type="number" onblur="if (this.value.length<4) this.style.borderColor = 'red'" onfocus="if (this.style.borderColor == 'red') this.style.borderColor = '#777'; root.style.setProperty('--joinLobbyInfoBoxTop', '0');" oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="4" class="joincode" max="9999" placeholder="0000">
+                        <span><img onclick="enterLobby()" src="../assets/arrowr2.svg"/></span>
                     </div>
                 </div>
                 <span onclick="mobileArrowAnim(); history.back()"><img src="../assets/arrowr2.svg" alt="Back"></span>

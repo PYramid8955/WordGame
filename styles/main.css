@@ -6,6 +6,8 @@
   --switchspect: 0;
   --switchspectb: 50%;
   --spectateafterdisplay: none;
+  --joinLobbyInfoBoxTop: 0;
+  --joinLobbyErrorBoxContent: '';
 }
 
 html { font-size: 3vh; }
@@ -82,14 +84,24 @@ body {
   width: 100vw;
   grid-area: option;
   display: grid;
-  grid-template-areas: "back joincode next";
+  grid-template-areas: "back joincode next" "error error error";
   grid-template-columns: 3rem 10rem 3rem;
-  grid-template-rows: 3rem;
+  grid-template-rows: 3rem 1rem;
   gap: .5rem;
   justify-content: center;
   justify-items: left;
   align-content: center;
   align-items: center;
+}
+
+.entergame>div {
+  width: 100%;
+  height: 100%;
+  font-size: .8rem;
+  color: red;
+  grid-area: error;
+  text-align: center;
+  font-weight: bolder;
 }
 
 .backenter {
@@ -853,14 +865,14 @@ input:focus {
 }
 
 #waitingRoom > div > div > span:nth-child(1)>div::after {
-  content: "Error 418. I'm a teapot.";
+  content: var(--joinLobbyErrorBoxContent);
   color: red;
   width: 100%;
   height: 100%;
   position: relative;
   transition: .5s;
   display: block;
-  top: 0;
+  top: var(--joinLobbyInfoBoxTop);
   left: 0;
 }
 
@@ -871,7 +883,7 @@ input:focus {
   position: relative;
   transition: .5s;
   display: block;
-  top: 0;
+  top: var(--joinLobbyInfoBoxTop);
   left: 0;
 }
 

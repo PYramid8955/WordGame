@@ -67,7 +67,13 @@ window.addEventListener("popstate", e => {
 
     }
 });
-  
+
+function joinGME(role) {
+    var role = role;
+    var roomCode = document.querySelector("#join > input").value;
+    socket.emit('checkroom', {role: role, roomCode: roomCode});
+}
+
 function joinGame(type) {
     oneMoreStepDots()
     let enternick = document.querySelector("#waitingRoom > div > div");
@@ -76,6 +82,32 @@ function joinGame(type) {
     setTimeout(() => {
         for (el of enternickcontent) el.style.visibility = "visible"
     }, 2000)
+}
+
+function enterLobby() {
+    let nickname = document.querySelector("#waitingRoom > div > div > input:nth-child(2)");
+    let discrim = document.querySelector("#waitingRoom > div > div > input:nth-child(4)");
+    let errors = 0;
+    if (discrim.value.length < 4) errors = joinLobbyErrors('discrimLen')
+    else if (nickname.value.trim() == '') errors = joinLobbyErrors('emptyNick')
+    else if (discrim.value.search(/^[0-9]+$/) == -1) errors = joinLobbyErrors('discrimUnexpectedChar')
+    else if (nickname.value.trim().search(/^[A-z]{1,10}$/) == -1) errors = joinLobbyErrors('nickUnexpectedChar')
+    if (errors) return;
+    if (!socket.connected) socket.connect();
+    socket.emit('', );
+}
+
+joinLobbyErrors = (err) => { // made to shorten error handling and displaying
+    let Errors = {
+        'discrimLen': '"Discriminatory should be 4 digit long!"',
+        'emptyNick': '"Nickname cannot be empty"',
+        'discrimUnexpectedChar': '"Discriminatory can only have digits"',
+        'nickUnexpectedChar': '"Nickname can only contain letters (A-z)"'
+    }
+
+    root.style.setProperty('--joinLobbyErrorBoxContent', Errors[err]);
+    root.style.setProperty('--joinLobbyInfoBoxTop', '-1.6rem');
+    return 1;
 }
 
 async function oneMoreStepDots() {
@@ -183,6 +215,19 @@ socket.on('response', function(response) {
             var roomCode = response.room
             console.log(roomCode)
             document.querySelector('#roomCode>span').innerHTML = roomCode;
+        }
+    }
+    if (response.to == 'checkroom') {
+        if (response.code == 200) {
+            slide('right', host, room);
+            joinGame();
+        } else {
+            let err = {
+                403: 'Spectator not enabled for this game.',
+                503: 'Player limit reached.',
+                404: '404: No such room.'
+            }
+            document.getElementById(`${response.role}EnterGameErrorBox`).innerHTML = err[response.code]
         }
     }
 });

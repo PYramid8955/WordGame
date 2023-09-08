@@ -70,6 +70,18 @@ function genRoomCode(codes, codeLength) {
    }
 }
 
+function checkroom(data) {
+    if (Object.keys(rooms).includes(data['roomCode'])) {
+        if (data['role'] == 's' && !rooms[data['roomCode']].spect) response = 403 // spectator desactivated by host
+        else if (data['role'] == 's') response = 200 // success
+        else if (data['role'] == 'p') {
+            if (rooms[data['roomCode']].playerNum == rooms[data['roomCode']].players.length) response = 503; // player limit reached
+            else response = 200 // success
+        }
+    } else response = 404; // no such room codes
+    return response
+}
+
 app.use(cookies());
 app.use(express.json()); 
 
@@ -92,13 +104,16 @@ io.on('connection', (socket) => {
             rooms[roomCode].admin = socket.id;
             rooms[socket.id] = roomCode;
             response = 201
-        }
+        } console.log(roomCode) // for debug
         io.to(socket.id).emit("response", {
             to: 'creategame',
             code: response,
-            room: roomCode,
-            secret: rooms[roomCode].secret
+            room: null ? response == 417 : roomCode,
+            secret: null ? response == 417 : rooms[roomCode].secret
         })
+    });
+    socket.on('checkroom', (data) => {
+        io.to(socket.id).emit("response", {to: 'checkroom',code: checkroom(data),role: data['role']})
     });
     socket.on("disconnect", (reason) => {
         if (rooms[rooms[socket.id]] && !rooms[rooms[socket.id]].start) {
