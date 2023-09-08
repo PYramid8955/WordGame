@@ -493,7 +493,7 @@ input[type=number] {
 }
 
 #addwords textarea:focus,
-.entergame input:focus {
+input:focus {
   outline: none;
 }
 
@@ -815,7 +815,7 @@ input[type=number] {
   width: 0;
   height: 0;
   grid-row-gap: .4rem;
-  background: radial-gradient(gray, #333);
+  background: #333;
   display: grid;
   grid-template-columns: 5fr 2rem 5fr;
   font-size: 1.5rem;
@@ -840,10 +840,45 @@ input[type=number] {
   box-sizing: border-box;
   font-size: 1.4rem;
   padding: .8rem 0;
-  font-weight: bold;
-  color: black;
   visibility: hidden;
+  overflow: hidden;
+  font-weight: bold;
+  color: #d7d7d7;
 }
+
+#waitingRoom > div > div > span:nth-child(1)>div {
+  overflow: inherit;
+  height: 1.6rem;
+  width: 100%;
+}
+
+#waitingRoom > div > div > span:nth-child(1)>div::after {
+  content: "Error 418. I'm a teapot.";
+  color: red;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: .5s;
+  display: block;
+  top: 0;
+  left: 0;
+}
+
+#waitingRoom > div > div > span:nth-child(1)>div::before {
+  content: 'Set your nickname and discriminatory';
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: .5s;
+  display: block;
+  top: 0;
+  left: 0;
+}
+
+/* for transition - 
+top: -1.6rem;
+for both after and before*
+*/
 
 #waitingRoom > div > div > input:nth-child(2) {
   grid-area: nick;
@@ -877,9 +912,14 @@ input[type=number] {
   height: 2rem;
   padding: .1rem;
   cursor: pointer;
+  transition: .1s;
 }
 #waitingRoom > div > div > span:nth-child(5) > img:hover {
   background: rgba(225, 225, 225, .1);
+}
+
+#waitingRoom > div > div > span:nth-child(5) > img:active {
+  background: rgba(184, 184, 184, 0.1);
 }
 
 @keyframes backanim {

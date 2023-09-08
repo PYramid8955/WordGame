@@ -69,7 +69,7 @@ window.addEventListener("popstate", e => {
 });
   
 function joinGame(type) {
-   oneMoreStepDots()
+    oneMoreStepDots()
     let enternick = document.querySelector("#waitingRoom > div > div");
     let enternickcontent = document.querySelectorAll("#waitingRoom > div > div > *");
     enternick.style.width = enternick.style.height = '50%';

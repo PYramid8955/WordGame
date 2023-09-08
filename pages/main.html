@@ -11,7 +11,7 @@ Then make the logic to work with js -->
     <script src="../scripts/main.js" defer></script>
     <title>WordGame</title>
 </head>
-<body onload="/*slide('right', mainmenu, host, false);*/ //letters()">
+<body onload="slide('right', mainmenu, host, false); createGame(); joinGame() //letters()">
     <div id="letters">
         <span>A</span>
         <span>B</span>
@@ -200,9 +200,9 @@ Then make the logic to work with js -->
                 <h1>One more step<span style="visibility: hidden;">.</span><span style="visibility: hidden;">.</span><span style="visibility: hidden;">.</span></h1>
                 <div class="playerfield">
                     <div>
-                        <span>Set your nickname and discriminatory</span>
-                        <input type="text" class="joincode" maxlength="10" placeholder="Nickname"><span>@</span><input type="number" class="joincode" max="9999" placeholder="0000">
-                        <span><img src="../assets/accept.svg"/></span>
+                        <span><div></div></span>
+                        <input type="text" class="joincode" maxlength="10" placeholder="Nickname"><span>@</span><input type="number" oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="4" class="joincode" max="9999" placeholder="0000">
+                        <span><img src="../assets/arrowr2.svg"/></span>
                     </div>
                 </div>
                 <span onclick="mobileArrowAnim(); history.back()"><img src="../assets/arrowr2.svg" alt="Back"></span>
