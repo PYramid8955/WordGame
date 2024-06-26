@@ -11,7 +11,7 @@ Then make the logic to work with js -->
     <script src="../scripts/main.js" defer></script>
     <title>WordGame</title>
 </head>
-<body onload="slide('right', mainmenu, host, false); //createGame(); joinGame() //letters()">
+<body onload="letters(); //slide('right', mainmenu, host, false); //createGame();">
     <div id="letters">
         <span>A</span>
         <span>B</span>
@@ -155,7 +155,7 @@ Then make the logic to work with js -->
                         </div>
                     </div>
                 </div>
-                <div class="forward movingbtn" onclick="createGame()"><img src="../assets/arrowr.svg" alt="continue"/></div>
+                <div class="forward movingbtn" onclick="createGame(); joinGame();"><img src="../assets/arrowr.svg" alt="continue"/></div>
             </div>
         </div>
         <div id="join" class="entergame">
